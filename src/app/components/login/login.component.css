@@ -1,0 +1,64 @@
+.form{
+  display: grid;
+  place-items: center;
+  margin: 3%;
+  padding: 10%;
+  border-radius: 20px;
+}
+
+h1{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+}
+
+form{
+  border: 1px solid rgb(0, 0, 0);
+  padding: 9%;
+  border-radius: 15px;
+}
+
+.form div{
+  width: 300px;
+}
+
+.form div label{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 17px;
+  margin: 2px;
+}
+
+.form div span{
+  display: none;
+}
+
+.form div .active{
+  display: block;
+  float: right;
+  color: red;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 1px;
+}
+
+.form div input{
+  background-color: rgba(153, 153, 153, 0.2);
+  border: none;
+  padding: 3px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.form div input:hover{
+  background-color: rgba(153, 153, 153, 0.5);
+}
+
+.form button:disabled{
+  background-color: grey;
+  color: white;
+  opacity: .3;
+  border: none;
+}

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="form">
+    <h1>Login</h1> <br/>
+    <form (ngSubmit)="submitForm()" #myForm="ngForm">
+      <div>
+        <label for="username">Username</label>
+        <br/>
+        <input type="text" required minlength="5" [(ngModel)]="username" #myUsername="ngModel" name="username" id="username">
+        <span [class.active]="myUsername.invalid && username"> *Username is too short </span>
+      </div>
+      <br/><br/>
+      <div>
+        <label for="password">Password</label>
+        <br/>
+        <input type="password" required minlength="8" [(ngModel)]="password" #myPassword="ngModel" name="password" id="password">
+        <span [class.active]="myPassword.invalid && password"> *Password is too short </span>
+      </div>
+      <br/><br/>
+      <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Done</button>
+      <div><span [class.active]="error">Bad credentials</span></div>
+    </form>
+  </div>
+</div>

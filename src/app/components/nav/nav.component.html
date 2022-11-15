@@ -1,0 +1,13 @@
+<div class="topnav">
+  <a href="/timeline">Timeline</a>
+  <a href="/publish">Publish</a>                                     <!-- If logged in, publish enabled, if not, hidden -->
+  <a href="/my-profile" style="float: right;">My profile</a>                   <!-- If logged in, show this -->
+  <a href="/my-cart" style="float: right;">Cart</a>                       <!-- If not logged in, show this instead -->
+  <a href="/login" style="float: right;">Login</a>
+  <div class="search-container">
+    <form onsubmit="return false" id="formSearchBar">
+        <input type="text" placeholder="Search..." id="searchBar" required>
+        <button type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+    </form>
+  </div>
+</div>
