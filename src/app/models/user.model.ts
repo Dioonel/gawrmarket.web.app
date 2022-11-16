@@ -8,7 +8,7 @@ export class User {
   role!: Role;
   age?: number;
   image!: string;
-  postings!: string | Array<Post>;
+  postings!: Post[] | [];
   created_at!: Date;
 }
 

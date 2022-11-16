@@ -37,7 +37,7 @@ export class DataService {
     return this.http.get<User>(`${this.url}/my-profile`);
   }
 
-  // getUser(id: string) {
-  //   return this.http.get<User>(`${this.url}/users/${id}`);
-  // }
+  getOneUser(id: string) {
+    return this.http.get<User>(`${this.url}/users/${id}`);
+  }
 }

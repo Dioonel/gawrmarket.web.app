@@ -4,11 +4,11 @@ import { Comment } from "./comment.model";
 
 export class Post {
   _id!: string;
-  seller!: string | SimpleUser;
+  seller!: SimpleUser;
   title!: string;
   description!: string;
-  product!: string | Product;
+  product!: Product;
   image!: string;
-  comments!: Array<Comment> | [];
+  comments!: Comment[] | [];
   created_at!: Date;
 }

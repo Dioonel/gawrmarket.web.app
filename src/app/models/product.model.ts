@@ -6,7 +6,7 @@ export class Product {
 
 export class Item {
   _id?: string;
-  product!: string | Product;
+  product!: Product;
   quantity!: number;
   subtotal?: number;
 }

@@ -2,23 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from './../../services/data.service';
-import { Post } from './../../../app/models/post.model';
+import { User } from './../../../app/models/user.model';
 
 @Component({
-  selector: 'app-post-detail',
-  templateUrl: './post-detail.component.html',
-  styleUrls: ['./post-detail.component.css']
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class PostDetailComponent implements OnInit {
-  post!: Post;
+export class UserComponent implements OnInit {
+  user!: User;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params.subscribe(id => {
-      this.dataService.getOnePost(id['id']).subscribe(data => {
+      this.dataService.getOneUser(id['id']).subscribe(data => {
         console.log(data);
-        this.post = data;
+        this.user = data;
       });
     })
   }
