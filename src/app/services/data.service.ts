@@ -4,6 +4,8 @@ import { map } from 'rxjs';
 
 import { Post } from './../models/post.model';
 import { User } from '../models/user.model';
+import { Cart } from '../models/cart.model';
+import { CreateItem } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +41,13 @@ export class DataService {
 
   getOneUser(id: string) {
     return this.http.get<User>(`${this.url}/users/${id}`);
+  }
+
+  getMyCart() {
+    return this.http.get<Cart>(`${this.url}/my-profile/cart`);
+  }
+
+  addToMyCart(item: CreateItem) {
+    return this.http.post<Cart>(`${this.url}/my-profile/cart`, item);
   }
 }

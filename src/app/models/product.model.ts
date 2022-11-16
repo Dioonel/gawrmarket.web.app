@@ -10,3 +10,8 @@ export class Item {
   quantity!: number;
   subtotal?: number;
 }
+
+export class CreateItem {
+  product!: string;
+  quantity!: number;
+}

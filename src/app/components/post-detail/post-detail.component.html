@@ -5,6 +5,9 @@
 <p> Seller: <a [routerLink]="'/user/' + post.seller._id"> {{ post.seller.username }} </a></p>
 <div> {{ post.description }} </div>
 
+<button class="buy-btn" (click)="addToCart()"> Add to cart </button>
+<input type="number" [(ngModel)]="quantity" min="1" max="100" required>
+
 <br/><br/><br/>
 
 <h1> Comments </h1>
