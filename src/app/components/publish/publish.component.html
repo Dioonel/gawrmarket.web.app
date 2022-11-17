@@ -1,0 +1,10 @@
+<app-nav></app-nav>
+<h1>Publish</h1>
+
+<form onsubmit="return false" (submit)="publish()">
+  <input type="text" placeholder="Title" [(ngModel)]="title" name="title" required> <br/>
+  <input type="text" placeholder="Description" [(ngModel)]="description" name="description" required> <br/>
+  <input type="number" placeholder="Price" [(ngModel)]="price" name="price" required> <br/>
+  <input type="text" placeholder="Image" [(ngModel)]="image" name="image" required> <br/>
+  <input type="submit" value="create">
+</form>

@@ -11,6 +11,7 @@ import { Post } from './../../../app/models/post.model';
   styleUrls: ['./post-detail.component.css']
 })
 export class PostDetailComponent implements OnInit {
+  loading = true;
   post!: Post;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
@@ -21,6 +22,7 @@ export class PostDetailComponent implements OnInit {
       this.dataService.getOnePost(id['id']).subscribe(data => {
         console.log(data);
         this.post = data;
+        this.loading = false;
       });
     })
   }

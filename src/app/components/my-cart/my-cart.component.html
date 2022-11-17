@@ -1,9 +1,14 @@
 <app-nav></app-nav>
 <h1> Cart </h1>
-<div *ngFor="let item of cart?.items">
-  <img [src]="item.product.image">
-  <h2> {{ item.product.product }}  x{{ item.quantity }} </h2>
-  <h3> ${{ item.subtotal }}.00 - (${{ item.product.price }}.00 each) </h3>
+<div *ngIf="!loading">
+  <div *ngFor="let item of cart?.items">
+    <img [src]="item.product.image">
+    <h2> {{ item.product.product }}  x{{ item.quantity }} </h2>
+    <h3> ${{ item.subtotal }}.00 - (${{ item.product.price }}.00 each) </h3>
+    <br/><br/>
+  </div>
   <br/><br/>
+  <h1> Total: ${{ cart.total }}.00 </h1>
 </div>
+
 

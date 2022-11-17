@@ -54,4 +54,8 @@ export class DataService {
   addToMyCart(item: CreateItem) {
     return this.http.post<Cart>(`${this.url}/my-profile/cart`, item);
   }
+
+  publishNewPost(post: any) {
+    return this.http.post<Post>(`${this.url}/postings`, post);
+  }
 }

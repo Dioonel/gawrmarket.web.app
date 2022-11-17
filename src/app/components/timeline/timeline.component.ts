@@ -11,16 +11,17 @@ import { Post } from './../../../app/models/post.model';
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
+  loading = true;
   data: Post[] = [];
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       this.dataService.getTimeline(params).subscribe(res => {
         this.data = res;
         console.log(this.data);
+        this.loading = false;
       });
     })
 

@@ -9,6 +9,7 @@ import { User } from './../../../app/models/user.model';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
+  loading = true;
   user!: User;
 
   constructor(private dataService: DataService) { }
@@ -17,6 +18,7 @@ export class MyProfileComponent implements OnInit {
     this.dataService.getMyProfile().subscribe(data => {
       console.log(data);
       this.user = data;
+      this.loading = false;
     });
   }
 

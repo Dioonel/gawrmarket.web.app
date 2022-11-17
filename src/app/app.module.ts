@@ -15,6 +15,7 @@ import { InterceptorService } from './services/interceptor.service';
 import { LoginComponent } from './components/login/login.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { UserComponent } from './components/user/user.component';
+import { PublishComponent } from './components/publish/publish.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UserComponent } from './components/user/user.component';
     MyCartComponent,
     LoginComponent,
     PostDetailComponent,
-    UserComponent
+    UserComponent,
+    PublishComponent
   ],
   imports: [
     BrowserModule,

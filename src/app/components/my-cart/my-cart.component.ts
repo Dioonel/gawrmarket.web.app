@@ -9,6 +9,7 @@ import { Cart } from './../../../app/models/cart.model';
   styleUrls: ['./my-cart.component.css']
 })
 export class MyCartComponent implements OnInit {
+  loading = true;
   cart!: Cart;
 
   constructor(private dataService: DataService) { }
@@ -17,6 +18,7 @@ export class MyCartComponent implements OnInit {
     this.dataService.getMyCart().subscribe(data => {
       console.log(data);
       this.cart = data;
+      this.loading = false;
     });
   }
 
