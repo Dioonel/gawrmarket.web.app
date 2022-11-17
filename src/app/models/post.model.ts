@@ -11,3 +11,11 @@ export class Post {
   comments!: Comment[] | [];
   created_at!: Date;
 }
+
+export class FilterPost {
+  limit?: number;
+  offset?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  title?: string;
+}

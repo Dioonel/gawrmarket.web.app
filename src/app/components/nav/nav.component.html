@@ -6,8 +6,8 @@
   <a href="/my-cart" style="float: right;">Cart</a>                       <!-- If not logged in, show this instead -->
   <a href="/login" style="float: right;">Login</a>
   <div class="search-container">
-    <form onsubmit="return false" id="formSearchBar">
-        <input type="text" placeholder="Search..." id="searchBar" required>
+    <form onsubmit="return false" id="formSearchBar" (submit)="search()">
+        <input type="text" placeholder="Search..." id="searchBar" required [(ngModel)]="searchContent" name="xd">
         <button type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
     </form>
   </div>

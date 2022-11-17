@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs';
 
-import { Post } from './../models/post.model';
+import { Post, FilterPost } from './../models/post.model';
 import { User } from '../models/user.model';
 import { Cart } from '../models/cart.model';
 import { CreateItem } from '../models/product.model';
+import { isEmpty } from './../../common/fns';
 
 @Injectable({
   providedIn: 'root'
@@ -27,8 +28,11 @@ export class DataService {
     }));
   }
 
-  getTimeline() {
-    return this.http.get<Post[]>(`${this.url}/postings`);
+  getTimeline(filter: FilterPost) {
+    if(isEmpty(filter)){
+      return this.http.get<Post[]>(`${this.url}/postings`);
+    }
+    return this.http.get<Post[]>(`${this.url}/postings?title=${filter.title}`);
   }
 
   getOnePost(id: string) {

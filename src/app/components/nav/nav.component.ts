@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { NgModel } from '@angular/forms';
+
+import { DataService } from './../../services/data.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,11 +10,17 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  searchContent = '';
   faSearch = faSearch;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
+  search() {
+    if(this.searchContent.length > 0) {
+      location.href = `/timeline?title=${this.searchContent}`;
+    }
+  }
 }
