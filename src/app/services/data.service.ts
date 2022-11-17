@@ -13,6 +13,7 @@ import { isEmpty } from './../../common/fns';
 })
 export class DataService {
   url = 'https://mighty-reaches-09724.herokuapp.com';
+  // url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -57,5 +58,9 @@ export class DataService {
 
   publishNewPost(post: any) {
     return this.http.post<Post>(`${this.url}/postings`, post);
+  }
+
+  createUser(user: any) {
+    return this.http.post<User>(`${this.url}/users`, user);
   }
 }
