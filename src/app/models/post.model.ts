@@ -8,7 +8,6 @@ export class Post {
   title!: string;
   description!: string;
   product!: Product;
-  image!: string;
   comments!: Comment[] | [];
   created_at!: Date;
 }

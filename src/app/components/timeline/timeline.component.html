@@ -2,7 +2,7 @@
 <h1> Timeline </h1>
 <div *ngFor="let post of data">
   <a [routerLink]="'/post/' + post._id">
-    <img class="img-post-small" [src]="post.image">
+    <img class="img-post-small" [src]="post.product.image">
     <h1 class="title-post"> {{ post.title }} </h1>
     <h2 class="price-post"> ${{ post.product.price }}.00 </h2>
   </a>

@@ -2,6 +2,7 @@ export class Product {
   _id!: string;
   product!: string;
   price!: number;
+  image!: string;
 }
 
 export class Item {
