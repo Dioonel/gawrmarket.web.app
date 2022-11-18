@@ -5,6 +5,7 @@
     <img [src]="item.product.image">
     <h2> {{ item.product.product }}  x{{ item.quantity }} </h2>
     <h3> ${{ item.subtotal }}.00 - (${{ item.product.price }}.00 each) </h3>
+    <button (click)="popItem(item.product._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
     <br/><br/>
   </div>
   <br/><br/>

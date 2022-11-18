@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgModel } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from './../../services/data.service';
 import { Post } from './../../../app/models/post.model';
@@ -13,9 +15,16 @@ import { Post } from './../../../app/models/post.model';
 export class PostDetailComponent implements OnInit {
   loading = true;
   post!: Post;
-
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  comment = '';
   quantity: number = 1;
+  userId = '';
+  faXmark = faXmark
+
+  constructor(private route: ActivatedRoute, private dataService: DataService, private cookie: CookieService) {
+    this.userId = this.cookie.get('user_id');
+    console.log(this.cookie.get('user_id'));
+  }
+
 
   ngOnInit() {
     this.route.params.subscribe(id => {
@@ -33,5 +42,21 @@ export class PostDetailComponent implements OnInit {
         console.log(data);
       });
     }
+  }
+
+  createComment() {
+    if(this.comment.length > 0){
+      this.dataService.createComment(this.post._id, { body: this.comment }).subscribe(data => {
+        console.log(data);
+        this.ngOnInit();
+      });
+    }
+  }
+
+  deleteComment(commentId: string) {
+    this.dataService.deleteComment(this.post._id, commentId).subscribe(data => {
+      console.log(data);
+      this.ngOnInit();
+    });
   }
 }

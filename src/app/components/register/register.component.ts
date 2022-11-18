@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 import { DataService } from './../../../app/services/data.service';
 
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   age!: number;
   image!: string;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cookie: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -30,7 +31,9 @@ export class RegisterComponent implements OnInit {
       console.log(user);
       this.dataService.createUser(user).subscribe(data => {
         this.dataService.login(this.username, this.password).subscribe(loginData => {
-          sessionStorage.setItem('jwt', loginData);
+          sessionStorage.setItem('jwt', loginData.token);
+          this.cookie.set('user_id', loginData.user._id);
+          this.cookie.set('username', loginData.user.username);
           location.href = '/my-profile';
         });
       });

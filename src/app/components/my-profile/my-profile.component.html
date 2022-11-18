@@ -8,6 +8,15 @@
   <br/><br/><br/>
 
   <h1> {{ user.username }}'s posts </h1>
-  <a *ngFor="let post of user.postings" [routerLink]="'/post/' + post._id"> {{ post.title }} <br/></a>
+  <div *ngFor="let post of user.postings">
+    <!-- <img class="small-img" [src]="post.product.image"> -->
+    <a [routerLink]="'/post/' + post._id"> {{ post.title }} </a>
+    <button (click)="deletePost(post._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
+    <br/>
+  </div>
+
+  <br/> <br/> <br/>
+  <h1> DELETE YOUR ACCOUNT PERMANENTLY</h1>
+  <button (click)="deleteAccount()">DELETE</button>
 </div>
 

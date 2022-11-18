@@ -13,10 +13,20 @@
 
   <h1> Comments </h1>
 
+  <h2> Create a new comment </h2>
+  <form onsubmit="return false" (submit)="createComment()">
+    <textarea cols="50" rows="5" placeholder="Write a new comment here..." required [(ngModel)]="comment" name="comment"></textarea>
+    <input type="submit">
+  </form>
+
   <div *ngFor="let comment of post.comments">
+    <img class="comment-img" [src]="comment.user.image">
     <p> By: <a [routerLink]="'/user/' + comment.user._id"> {{ comment.user.username }} </a></p>
     <p> {{ comment.body }} </p>
-    <br/>
+    <div *ngIf="comment.user._id === userId">
+      <button (click)="deleteComment(comment._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
+    </div>
+    <br/> <br/>
   </div>
 </div>
 

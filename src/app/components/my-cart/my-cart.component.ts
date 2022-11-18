@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from './../../services/data.service';
 import { Cart } from './../../../app/models/cart.model';
@@ -11,6 +12,7 @@ import { Cart } from './../../../app/models/cart.model';
 export class MyCartComponent implements OnInit {
   loading = true;
   cart!: Cart;
+  faXmark = faXmark;
 
   constructor(private dataService: DataService) { }
 
@@ -22,4 +24,12 @@ export class MyCartComponent implements OnInit {
     });
   }
 
+  popItem(productId: string) {
+    if(productId){
+      this.dataService.popItem(productId).subscribe(data => {
+        console.log(data);
+        this.ngOnInit();
+      });
+    }
+  }
 }
