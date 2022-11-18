@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 import { DataService } from './../../services/data.service';
 import { Post } from './../../../app/models/post.model';
@@ -13,18 +13,34 @@ import { Post } from './../../../app/models/post.model';
 export class TimelineComponent implements OnInit {
   loading = true;
   data: Post[] = [];
+  minPrice!: number;
+  maxPrice!: number;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.activatedRoute.queryParams.subscribe(params => {
       this.dataService.getTimeline(params).subscribe(res => {
         this.data = res;
         console.log(this.data);
         this.loading = false;
       });
     })
-
   }
 
+  filter(){
+    this.activatedRoute.queryParams.subscribe(params => {
+      let myQuery: Params = {};
+      if(this.minPrice) {
+        myQuery['minPrice'] = this.minPrice;
+      }
+      if(this.maxPrice) {
+        myQuery['maxPrice'] = this.maxPrice;
+      }
+      if(params['title']) {
+        myQuery['title'] = params['title'];
+      }
+      this.router.navigate(['/timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
+    });
+  }
 }

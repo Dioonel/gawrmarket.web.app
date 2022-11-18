@@ -1,4 +1,11 @@
 <app-nav></app-nav>
+<br/>
+<h3> Filters </h3>
+<span> Min price: </span> <input type="number" placeholder="min" [(ngModel)]="minPrice" /> <br/>
+<span> Max price: </span> <input type="number" placeholder="max" [(ngModel)]="maxPrice" /> <br/>
+<button (click)="filter()">APPLY</button>
+<a href="/timeline"><button>RESET</button></a>
+<br/><br/>
 <h1> Timeline </h1>
 <div *ngIf="!loading">
   <div *ngFor="let post of data">

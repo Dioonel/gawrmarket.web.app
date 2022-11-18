@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs';
 
 import { Post, FilterPost } from './../models/post.model';
@@ -34,7 +34,25 @@ export class DataService {
     if(isEmpty(filter)){
       return this.http.get<Post[]>(`${this.url}/postings`);
     }
-    return this.http.get<Post[]>(`${this.url}/postings?title=${filter.title}`);
+    let params = new HttpParams();
+    // if(filter.limit) {
+    //   params = params.append('limit', filter.limit.toString());
+    // }
+    // if(filter.offset) {
+    //   params = params.append('offset', filter.offset.toString());
+    // }
+    if(filter.minPrice) {
+      params = params.append('minPrice', filter.minPrice);
+    }
+    if(filter.maxPrice) {
+      params = params.append('maxPrice', filter.maxPrice);
+    }
+    if(filter.title) {
+      params = params.append('title', filter.title);
+    }
+
+    console.log(params);
+    return this.http.get<Post[]>(`${this.url}/postings`, {params});
   }
 
   getOnePost(id: string) {
