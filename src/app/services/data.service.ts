@@ -5,7 +5,7 @@ import { map } from 'rxjs';
 import { Post, FilterPost } from './../models/post.model';
 import { User } from '../models/user.model';
 import { Cart } from '../models/cart.model';
-import { CreateItem } from '../models/product.model';
+import { CreateItem } from '../models/item.model';
 import { Comment } from '../models/comment.model';
 import { isEmpty } from './../../common/fns';
 
@@ -14,7 +14,7 @@ import { isEmpty } from './../../common/fns';
 })
 export class DataService {
   url = 'https://mighty-reaches-09724.herokuapp.com';
-  // url = 'http://localhost:3000';
+  //url = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
@@ -75,8 +75,8 @@ export class DataService {
     return this.http.post<Cart>(`${this.url}/my-profile/cart`, item);
   }
 
-  popItem(productId: string){
-    return this.http.delete<Cart>(`${this.url}/my-profile/cart/${productId}`);
+  popItem(postId: string){
+    return this.http.delete<Cart>(`${this.url}/my-profile/cart/${postId}`);
   }
 
   publishNewPost(post: any) {

@@ -22,13 +22,10 @@ export class PublishComponent implements OnInit {
   publish(){
     if(this.title && this.description && this.price && this.image){
       this.dataService.publishNewPost({
-        product: {
-          product: this.title,
-          price: this.price,
-          image: this.image
-        },
         title: this.title,
-        description: this.description
+        description: this.description,
+        price: this.price,
+        image: this.image
       }).subscribe(data => {
         console.log(data);
       });

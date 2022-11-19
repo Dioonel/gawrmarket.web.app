@@ -37,8 +37,8 @@ export class PostDetailComponent implements OnInit {
   }
 
   addToCart() {
-    if(this.post.product){
-      this.dataService.addToMyCart({ product: this.post.product._id, quantity: this.quantity }).subscribe(data => {
+    if(this.post._id){
+      this.dataService.addToMyCart({ posting: this.post._id, quantity: this.quantity }).subscribe(data => {
         console.log(data);
       });
     }

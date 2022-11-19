@@ -1,8 +1,8 @@
 <app-nav></app-nav>
 <div *ngIf="!loading">
-  <img class="img-post-big" [src]="post.product.image">
+  <img class="img-post-big" [src]="post.image">
   <h1 class="title-post"> {{ post.title }} </h1>
-  <h2> ${{ post.product.price }}.00 </h2>
+  <h2> ${{ post.price }}.00 </h2>
   <p> Seller: <a [routerLink]="'/user/' + post.seller._id"> {{ post.seller.username }} </a></p>
   <div> {{ post.description }} </div>
 

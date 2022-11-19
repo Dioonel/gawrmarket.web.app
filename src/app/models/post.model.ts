@@ -1,4 +1,3 @@
-import { Product } from "./product.model";
 import { SimpleUser } from "./user.model";
 import { Comment } from "./comment.model";
 
@@ -7,7 +6,8 @@ export class Post {
   seller!: SimpleUser;
   title!: string;
   description!: string;
-  product!: Product;
+  price!: number;
+  image?: string;
   comments!: Comment[] | [];
   created_at!: Date;
 }

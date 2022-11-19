@@ -24,9 +24,9 @@ export class MyCartComponent implements OnInit {
     });
   }
 
-  popItem(productId: string) {
-    if(productId){
-      this.dataService.popItem(productId).subscribe(data => {
+  popItem(postId: string) {
+    if(postId){
+      this.dataService.popItem(postId).subscribe(data => {
         console.log(data);
         this.ngOnInit();
       });
