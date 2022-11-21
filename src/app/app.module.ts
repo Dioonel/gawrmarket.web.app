@@ -6,18 +6,20 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { NavComponent } from './components/nav/nav.component';
+import { HomeComponent } from './website/pages/home/home.component';
+import { NavComponent } from './website/components/nav/nav.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TimelineComponent } from './components/timeline/timeline.component';
-import { MyProfileComponent } from './components/my-profile/my-profile.component';
-import { MyCartComponent } from './components/my-cart/my-cart.component';
+import { TimelineComponent } from './website/pages/timeline/timeline.component';
+import { MyProfileComponent } from './website/pages/my-profile/my-profile.component';
+import { MyCartComponent } from './website/pages/my-cart/my-cart.component';
 import { InterceptorService } from './services/interceptor.service';
-import { LoginComponent } from './components/login/login.component';
-import { PostDetailComponent } from './components/post-detail/post-detail.component';
-import { UserComponent } from './components/user/user.component';
-import { PublishComponent } from './components/publish/publish.component';
-import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './website/pages/login/login.component';
+import { PostDetailComponent } from './website/pages/post-detail/post-detail.component';
+import { UserComponent } from './website/pages/user/user.component';
+import { PublishComponent } from './website/pages/publish/publish.component';
+import { RegisterComponent } from './website/pages/register/register.component';
+import { LayoutComponent } from './website/pages/layout/layout.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { RegisterComponent } from './components/register/register.component';
     PostDetailComponent,
     UserComponent,
     PublishComponent,
-    RegisterComponent
+    RegisterComponent,
+    LayoutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

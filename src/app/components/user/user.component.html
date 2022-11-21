@@ -1,9 +1,0 @@
-<app-nav></app-nav>
-<img class="img-user" [src]="user.image">
-<h1> {{ user.username }} </h1>
-<h2> Age: {{ user.age || '??' }} </h2>
-
-<br/><br/><br/>
-
-<h1> {{ user.username }}'s posts </h1>
-<a *ngFor="let post of user.postings" [routerLink]="'/post/' + post._id"> {{ post.title }} <br/></a>

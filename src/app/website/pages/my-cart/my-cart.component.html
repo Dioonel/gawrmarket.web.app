@@ -1,0 +1,12 @@
+<h1> Cart </h1>
+<div *ngIf="!loading">
+  <div *ngFor="let item of cart?.items">
+    <img [src]="item.posting.image">
+    <h2> {{ item.posting.title }}  x{{ item.quantity }} </h2>
+    <h3> ${{ item.subtotal }}.00 - (${{ item.posting.price }}.00 each) </h3>
+    <button (click)="popItem(item.posting._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
+    <br/><br/>
+  </div>
+  <br/><br/>
+  <h1> Total: ${{ cart.total }}.00 </h1>
+</div>

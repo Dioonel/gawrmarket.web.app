@@ -1,0 +1,31 @@
+<div *ngIf="!loading">
+  <img class="img-post-big" [src]="post.image">
+  <h1 class="title-post"> {{ post.title }} </h1>
+  <h2> ${{ post.price }}.00 </h2>
+  <p> Seller: <a [routerLink]="'/user/' + post.seller._id"> {{ post.seller.username }} </a></p>
+  <div> {{ post.description }} </div>
+
+  <button class="buy-btn" (click)="addToCart()"> Add to cart </button>
+  <input type="number" [(ngModel)]="quantity" min="1" max="100" required>
+
+  <br/><br/><br/>
+
+  <h1> Comments </h1>
+
+  <h2> Create a new comment </h2>
+  <form onsubmit="return false" (submit)="createComment()">
+    <textarea cols="50" rows="5" placeholder="Write a new comment here..." required [(ngModel)]="comment" name="comment"></textarea>
+    <input type="submit">
+  </form>
+
+  <div *ngFor="let comment of post.comments">
+    <img class="comment-img" [src]="comment.user.image">
+    <p> By: <a [routerLink]="'/user/' + comment.user._id"> {{ comment.user.username }} </a></p>
+    <p> {{ comment.body }} </p>
+    <div *ngIf="comment.user._id === userId">
+      <button (click)="deleteComment(comment._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
+    </div>
+    <br/> <br/>
+  </div>
+</div>
+
