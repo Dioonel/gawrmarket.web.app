@@ -1,5 +1,5 @@
 <div *ngIf="!loading">
-  <img class="img-post-big" [src]="post.image">
+  <app-img [img]="post.image"></app-img>
   <h1 class="title-post"> {{ post.title }} </h1>
   <h2> ${{ post.price }}.00 </h2>
   <p> Seller: <a [routerLink]="'/user/' + post.seller._id"> {{ post.seller.username }} </a></p>
@@ -20,8 +20,8 @@
 
   <div *ngFor="let comment of post.comments">
     <img class="comment-img" [src]="comment.user.image">
-    <p> By: <a [routerLink]="'/user/' + comment.user._id"> {{ comment.user.username }} </a></p>
-    <p> {{ comment.body }} </p>
+    <p> By: <a [routerLink]="'/user/' + comment.user._id"> {{ comment.user.username }} </a> </p>
+    <p> {{ comment.body }} </p> <span> {{ comment.created_at.toString() | timeAgo }} ago. </span>
     <div *ngIf="comment.user._id === userId">
       <button (click)="deleteComment(comment._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
     </div>

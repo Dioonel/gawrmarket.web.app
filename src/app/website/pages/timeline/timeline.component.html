@@ -9,7 +9,7 @@
 <div *ngIf="!loading">
   <div *ngFor="let post of data">
     <a [routerLink]="'/post/' + post._id">
-      <img class="img-post-small" [src]="post.image">
+      <app-img [img]="post.image"></app-img>
       <h1 class="title-post"> {{ post.title }} </h1>
       <h2 class="price-post"> ${{ post.price }}.00 </h2>
     </a>
