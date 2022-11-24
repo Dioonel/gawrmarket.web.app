@@ -17,7 +17,8 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: HomeComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
       { path: 'timeline', component: TimelineComponent },
       { path: 'my-profile', component: MyProfileComponent },
       { path: 'my-cart', component: MyCartComponent },

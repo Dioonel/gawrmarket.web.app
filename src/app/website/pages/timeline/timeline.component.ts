@@ -16,16 +16,19 @@ export class TimelineComponent implements OnInit {
   minPrice!: number;
   maxPrice!: number;
 
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
+    console.log('ejecutando constructor de timeline');
+  }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
+      console.log(params);
       this.dataService.getTimeline(params).subscribe(res => {
         this.data = res;
         console.log(this.data);
         this.loading = false;
       });
-    })
+    });
   }
 
   filter(){
@@ -40,7 +43,7 @@ export class TimelineComponent implements OnInit {
       if(params['title']) {
         myQuery['title'] = params['title'];
       }
-      this.router.navigate(['/timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
+      this.router.navigate([], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
     });
   }
 }
