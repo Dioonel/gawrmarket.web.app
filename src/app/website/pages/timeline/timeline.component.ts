@@ -16,9 +16,7 @@ export class TimelineComponent implements OnInit {
   minPrice!: number;
   maxPrice!: number;
 
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {
-    console.log('ejecutando constructor de timeline');
-  }
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {

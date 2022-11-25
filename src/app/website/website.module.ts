@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './../shared/shared.module';
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -44,7 +45,8 @@ import { LayoutComponent } from './pages/layout/layout.component';
         FontAwesomeModule,
         SharedModule,
         MatToolbarModule,
-        MatButtonModule
+        MatButtonModule,
+        ReactiveFormsModule
     ]
 })
 export class WebsiteModule { }

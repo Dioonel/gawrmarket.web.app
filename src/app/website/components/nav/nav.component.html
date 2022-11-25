@@ -1,13 +1,13 @@
 <mat-toolbar class="nav">
-  <a mat-button [routerLink]="['home']"><img src="assets/gawrlogo.png" class="logo" (click)="navigating()"></a>
+  <a mat-button [routerLink]="['/']"><img src="assets/gawrlogo.png" class="logo" (click)="navigating()"></a>
 
   <div>
-    <form id="formSearchBar" (submit)="search()" class="search-bar">
-      <input type="search" name="search" id="searchBar" pattern=".*\S.*" required [(ngModel)]="searchContent" (focus)="focus()" (focusout)="unfocus()">
-      <button class="search-btn" type="submit">
+    <div class="search-bar">
+      <input type="search" [formControl]="searchContent" (focus)="focus()" (focusout)="unfocus()" autocomplete="off" required>
+      <button class="search-btn" type="submit" (click)="search()">
         <span>Search</span>
       </button>
-    </form>
+    </div>
   </div>
 
   <div [class.hidden]="hideBtns">

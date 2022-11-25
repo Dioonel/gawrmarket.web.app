@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { NgModel } from '@angular/forms';
+import { NgModel, FormControl, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  searchContent!: string;
+  searchContent = new FormControl('', [Validators.required]);
   username!: string;
   faSearch = faSearch;
   faCartShopping = faCartShopping;
@@ -22,14 +22,13 @@ export class NavComponent implements OnInit {
 
   constructor(private dataService: DataService, private cookie: CookieService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.username = this.cookie.get('username');
-    this.searchContent = '';
     this.hideBtns = false;
   }
 
   ngOnInit(): void {}
 
   search() {
-    if(this.searchContent.length > 0) {
+    if(this.searchContent.valid) {
       this.routeSuscription = this.activatedRoute.queryParams.subscribe(params => {
         let myQuery: Params = {};
         if(params['minPrice']) {
@@ -38,9 +37,9 @@ export class NavComponent implements OnInit {
         if(params['maxPrice']) {
           myQuery['maxPrice'] = params['maxPrice'];
         }
-        myQuery['title'] = this.searchContent;
-        if(this.searchContent.length > 0) {
-          this.searchContent = '';
+        myQuery['title'] = this.searchContent.value;
+        if(this.searchContent.valid) {
+          this.searchContent.setValue('');
           this.router.navigate(['timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
         }
         setTimeout(() => {
@@ -59,13 +58,13 @@ export class NavComponent implements OnInit {
   }
 
   unfocus() {
-    if(this.searchContent.length === 0) {
+    if(this.searchContent.invalid) {
       this.hideBtns = false;
     }
   }
 
   navigating() {
-    this.searchContent = '';
+    this.searchContent.setValue('');
     this.hideBtns = false;
   }
 }
