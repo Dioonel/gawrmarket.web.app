@@ -10,6 +10,7 @@ import { User } from '../../../models/user.model';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  loading = true;
   user!: User;
 
   constructor(private route: ActivatedRoute, private dataService: DataService) { }
@@ -19,6 +20,7 @@ export class UserComponent implements OnInit {
       this.dataService.getOneUser(id['id']).subscribe(data => {
         console.log(data);
         this.user = data;
+        this.loading = false;
       });
     })
   }

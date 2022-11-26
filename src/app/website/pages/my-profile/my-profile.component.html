@@ -1,21 +1,3 @@
-<p> EDITION IS UNAVAILABLE RIGHT NOW, TRY AGAIN LATER </p>
-<div *ngIf="!loading">
-  <app-img [img]="user.image"></app-img>
-  <h1> {{ user.username }} </h1>
-  <h2> Age: {{ user.age || '??' }} </h2>
-
-  <br/><br/><br/>
-
-  <h1> {{ user.username }}'s posts </h1>
-  <div *ngFor="let post of user.postings">
-    <!-- <img class="small-img" [src]="post.image"> -->
-    <a [routerLink]="'/post/' + post._id"> {{ post.title }} </a>
-    <button (click)="deletePost(post._id)"><fa-icon [icon]="faXmark"></fa-icon></button>
-    <br/>
-  </div>
-
-  <br/> <br/> <br/>
-  <h1> DELETE YOUR ACCOUNT PERMANENTLY</h1>
-  <button (click)="deleteAccount()">DELETE</button>
-</div>
-
+<!-- <h1> DELETE YOUR ACCOUNT PERMANENTLY</h1>
+<button (click)="deleteAccount()">DELETE</button> -->
+<app-user-template *ngIf="!loading" [user]="user"></app-user-template>

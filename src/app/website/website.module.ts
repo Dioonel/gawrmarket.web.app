@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from './../shared/shared.module';
@@ -20,6 +21,7 @@ import { UserComponent } from './pages/user/user.component';
 import { PublishComponent } from './pages/publish/publish.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
+import { UserTemplateComponent } from './components/user-template/user-template.component';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
         PublishComponent,
         RegisterComponent,
         LayoutComponent,
+        UserTemplateComponent,
 
     ],
     imports: [
@@ -46,6 +49,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
         SharedModule,
         MatToolbarModule,
         MatButtonModule,
+        MatCardModule,
         ReactiveFormsModule
     ]
 })

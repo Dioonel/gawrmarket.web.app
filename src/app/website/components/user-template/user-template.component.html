@@ -1,0 +1,31 @@
+<h1 class="title">User info:</h1>
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <img class="header-image" [src]="user.image">
+      <div>
+        <mat-card-title class="username"> {{ user.username }}</mat-card-title>
+        <mat-card-subtitle class="role"> {{ user.role }} </mat-card-subtitle>
+        <p> Age: {{ user.age || '?' }} </p>
+        <p> More data... </p>
+        <p> Even more data coming soon... </p>
+      </div>
+    </mat-card-header>
+  </mat-card>
+</div>
+
+<br/>
+
+<h1 class="title">Posts:</h1>
+<div class="container">
+  <div class="posts--grid">
+    <mat-card class="post-card" *ngFor="let post of user.postings" [routerLink]="'/post/' + post._id">
+      <img mat-card-image [src]="post.image" class="post-img">
+      <mat-card-content>
+        <mat-card-title> {{ post.title }} </mat-card-title>
+        <mat-card-title> ${{ post.price }}.00 </mat-card-title>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<br/>
