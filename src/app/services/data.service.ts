@@ -99,6 +99,10 @@ export class DataService {
     return this.http.delete<boolean>(`${this.url}/postings/${postId}/${commentId}`);
   }
 
+  updateMyProfile(changes: any){
+    return this.http.put<User>(`${this.url}/my-profile`, changes);
+  }
+
   deleteMyProfile(){
     return this.http.delete<any>(`${this.url}/my-profile/delete`);
   }

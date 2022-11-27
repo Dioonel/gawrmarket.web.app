@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +26,7 @@ import { PublishComponent } from './pages/publish/publish.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { UserTemplateComponent } from './components/user-template/user-template.component';
+import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 
 
 @NgModule({
@@ -38,6 +43,7 @@ import { UserTemplateComponent } from './components/user-template/user-template.
         RegisterComponent,
         LayoutComponent,
         UserTemplateComponent,
+        EditProfileComponent,
 
     ],
     imports: [
@@ -50,7 +56,11 @@ import { UserTemplateComponent } from './components/user-template/user-template.
         MatToolbarModule,
         MatButtonModule,
         MatCardModule,
-        ReactiveFormsModule
+        MatInputModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatFormFieldModule,
+        ReactiveFormsModule,
     ]
 })
 export class WebsiteModule { }

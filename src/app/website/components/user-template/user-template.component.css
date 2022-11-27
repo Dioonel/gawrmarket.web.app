@@ -7,14 +7,22 @@
 
 .container{
   display: flex;
-  width: 100%;
+  width: 100vw;
   justify-content: center;
 }
 
+.edit-btn{
+  display: inline;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 .card {
-  width: 80%;
-  max-width: 80%;
-  height: 240px;
+  width: 80vw;
+  max-width: 80vw;
+  min-height: 240px;
+  max-height: fit-content;
   margin-top: 20px;
   padding: 16px 0px;
 }
@@ -38,7 +46,19 @@
 .role, p{
   font-size: 1.6em;
   font-family: 'Roboto', sans-serif;
+  margin-bottom: 2px;
 }
+
+.p-cont{
+  display: flex;
+  width: fit-content;
+  flex-direction: row;
+  gap: 10px
+}
+
+/* .p-cont span{
+  margin-right: 10px;
+} */
 
 .post-card {
   margin-top: 15px;
@@ -78,8 +98,8 @@
     object-fit: cover;
   }
   .card{
-    width: 90%;
-    max-width: 90%;
+    width: 90vw;
+    max-width: 90vw;
     height: auto;
     overflow: auto;
   }
@@ -91,6 +111,9 @@
   }
   .role, p{
     font-size: 1.4em;
+  }
+  .p-cont{
+    display: block;
   }
   .post-card{
     max-width: 80vw;

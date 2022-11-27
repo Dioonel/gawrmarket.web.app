@@ -1,14 +1,19 @@
 <h1 class="title">User info:</h1>
 <div class="container">
   <mat-card class="card">
+    <a *ngIf="edit" mat-button class="edit-btn" [routerLink]="['edit']"><fa-icon [icon]="faEdit" size="2xl"></fa-icon></a>
     <mat-card-header>
       <img class="header-image" [src]="user.image">
       <div>
         <mat-card-title class="username"> {{ user.username }}</mat-card-title>
         <mat-card-subtitle class="role"> {{ user.role }} </mat-card-subtitle>
-        <p> Age: {{ user.age || '?' }} </p>
-        <p> More data... </p>
-        <p> Even more data coming soon... </p>
+        <p class="p-cont">
+          <span *ngIf="user.country"> {{ user.country }} </span>
+          <span *ngIf="user.gender !== 'Other'"> {{ user.gender }} </span>
+          <span *ngIf="user.age"> {{ user.age }} yo </span>
+        </p>
+        <p *ngIf="user.email"> {{ user.email }} </p>
+        <p *ngIf="user.bio"> {{ user.bio }} </p>
       </div>
     </mat-card-header>
   </mat-card>
