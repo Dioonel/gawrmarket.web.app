@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Country } from '@angular-material-extensions/select-country';
 
 import { DataService } from './../../../services/data.service';
 import { User } from './../../../models/user.model';
@@ -12,6 +13,13 @@ import { isEmpty } from './../../../../common/fns';
   styleUrls: ['./edit-profile.component.css']
 })
 export class EditProfileComponent implements OnInit {
+  defaultCountry: Country = {
+    name: '',
+    alpha2Code: '',
+    alpha3Code: '',
+    numericCode: '',
+    callingCode: ''
+  }
   form!: FormGroup;
   loading = true;
   user!: User;
@@ -22,6 +30,7 @@ export class EditProfileComponent implements OnInit {
     this.dataService.getMyProfile().subscribe(data => {
       console.log(data);
       this.user = data;
+      this.defaultCountry.alpha2Code = data.country.toString();
       this.buildForm();
       this.loading = false;
     });
@@ -34,7 +43,7 @@ export class EditProfileComponent implements OnInit {
       bio: [this.user.bio, Validators.maxLength(240)],
       image: [this.user.image],
       age: [this.user.age, Validators.min(1)],
-      country: [this.user.country],
+      country: [this.defaultCountry],
       gender: [this.user.gender]
     });
   }
@@ -47,8 +56,12 @@ export class EditProfileComponent implements OnInit {
       if(changes.bio === this.user.bio || changes.bio === '') delete changes.bio;
       if(changes.image === this.user.image || changes.image === '') delete changes.image;
       if(changes.age === this.user.age) delete changes.age;
-      if(changes.country === this.user.country || changes.country === '') delete changes.country;
       if(changes.gender === this.user.gender || changes.gender === '') delete changes.gender;
+      if(changes.country?.alpha2Code === this.user.country) {
+        delete changes.country;
+      } else {
+        changes.country = changes.country?.alpha2Code;
+      }
 
       if(!isEmpty(changes)) {
         console.log(changes);
@@ -61,4 +74,5 @@ export class EditProfileComponent implements OnInit {
     }
     // configure invalid messages
   }
+
 }

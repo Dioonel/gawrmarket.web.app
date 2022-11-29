@@ -36,9 +36,7 @@
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <mat-form-field>
-              <input matInput placeholder="Country" formControlName="country">
-            </mat-form-field>
+            <mat-select-country formControlName="country" label="Country" appearance="outline" autocomplete="off" [value]="defaultCountry"></mat-select-country>
           </div>
           <div class="col-md-12">
             <mat-radio-group class="margin-left" formControlName="gender">
