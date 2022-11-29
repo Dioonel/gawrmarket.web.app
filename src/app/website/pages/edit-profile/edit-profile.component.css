@@ -11,5 +11,21 @@
 }
 
 .form-container{
-  margin: 100px;
+  margin: 50px 100px;
+}
+
+.thumbnail{
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+.thumbnail:hover{
+  cursor: pointer;
+  -webkit-filter: brightness(60%);
+}
+
+.single-label{
+  padding-top: 30px;
+  font-size: 1.6em;
 }

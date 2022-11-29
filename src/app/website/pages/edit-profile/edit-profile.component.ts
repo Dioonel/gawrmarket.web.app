@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Country } from '@angular-material-extensions/select-country';
 
 import { DataService } from './../../../services/data.service';
+import { ImageService } from './../../../services/image.service';
 import { User } from './../../../models/user.model';
 import { isEmpty } from './../../../../common/fns';
 
@@ -22,9 +23,11 @@ export class EditProfileComponent implements OnInit {
   }
   form!: FormGroup;
   loading = true;
+  imgUpdate = false;
+  loadingImg = false;
   user!: User;
 
-  constructor(private dataService: DataService, private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private dataService: DataService, private imageService: ImageService,private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
     this.dataService.getMyProfile().subscribe(data => {
@@ -62,6 +65,9 @@ export class EditProfileComponent implements OnInit {
       } else {
         changes.country = changes.country?.alpha2Code;
       }
+      if(this.imgUpdate === true){
+        changes.image = this.user.image;
+      }
 
       if(!isEmpty(changes)) {
         console.log(changes);
@@ -75,4 +81,19 @@ export class EditProfileComponent implements OnInit {
     // configure invalid messages
   }
 
+  async getImage(event: Event){
+    try{
+      let input = event.target as HTMLInputElement;
+      if(input.files && input.files.length > 0){
+        console.log(input.files[0]);
+        this.loadingImg = true;
+        let image: File = input.files[0];
+        this.user.image = await this.imageService.uploadImage(image);
+        this.loadingImg = false;
+        this.imgUpdate = true;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
