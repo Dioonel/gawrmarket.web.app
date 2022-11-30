@@ -65,15 +65,19 @@ export class NavComponent implements OnInit {
   }
 
   unfocus() {
-    if(this.searchContent.invalid) {
-      this.hideBtns = false;
-      this.hideLogo = false;
-    }
+    setTimeout(() => {
+      if(this.searchContent.invalid) {
+        this.hideBtns = false;
+        this.hideLogo = false;
+      }
+    }, 250);
   }
 
   navigating() {
-    this.searchContent.setValue('');
-    this.hideBtns = false;
-    this.hideLogo = false;
+    setTimeout(() => {
+      this.searchContent.setValue('');
+      this.hideBtns = false;
+      this.hideLogo = false;
+    }, 250);
   }
 }

@@ -30,7 +30,6 @@
   max-width: 80vw;
   min-height: 275px;
   margin-top: 20px;
-  /* padding: 8px 0px 0px 0px; */
 }
 
 mat-card-header{
@@ -61,8 +60,6 @@ mat-card-header{
 
 .p-cont{
   display: flex;
-  /* width: fit-content;
-  flex-direction: row; */
   gap: 10px
 }
 
@@ -80,9 +77,6 @@ mat-card-header{
   font-weight: 500;
   margin-top: 3px;
 }
-/* .p-cont span{
-  margin-right: 10px;
-} */
 
 .post-card {
   margin-top: 15px;

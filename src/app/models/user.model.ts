@@ -15,6 +15,7 @@ export class User {
   country!: CountryCode;
   postings!: Post[] | [];
   created_at!: Date;
+  message?: string;
 }
 
 export interface SimpleUser extends Pick<User, '_id'| 'username' | 'image'> {}
