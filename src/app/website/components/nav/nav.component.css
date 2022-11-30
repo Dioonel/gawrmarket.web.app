@@ -9,12 +9,12 @@
   padding: 0px 5px;
 }
 
-.nav div a {
+.nav div div a {
   font-size: 1.2em;
-  font-family: monospace;
-  font-weight: 600;
+  /* font-family: monospace;
+  font-weight: 600; */
   color: #f5f5f5;
-  padding: 8px 8px;
+  /* padding: 20px 0px; */
 }
 
 * {
@@ -36,6 +36,7 @@ body, input {
 }
 body, .search-bar {
 	display: flex;
+  padding: 0;
 }
 body {
 	background: #f1f1f1;
@@ -181,4 +182,10 @@ body {
 
 .search-bar{
   padding: 0px;
+}
+
+@media screen and (max-width: 520px){
+  .nav div div a {
+    margin: 0px -4px;
+  }
 }

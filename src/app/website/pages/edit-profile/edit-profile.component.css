@@ -11,7 +11,7 @@
 }
 
 .form-container{
-  margin: 50px 100px;
+  margin: 45px 120px;
 }
 
 .thumbnail{
@@ -28,4 +28,17 @@
 .single-label{
   padding-top: 30px;
   font-size: 1.6em;
+}
+
+@media screen and (width < 800px) {
+  .form-container{
+    margin: 40px 30px;
+  }
+}
+
+@media screen and (width < 500px) {
+  .thumbnail{
+    width: 240px;
+    height: 240px;
+  }
 }

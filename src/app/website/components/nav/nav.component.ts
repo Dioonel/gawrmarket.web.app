@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { NgModel, FormControl, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
@@ -17,12 +17,15 @@ export class NavComponent implements OnInit {
   username!: string;
   faSearch = faSearch;
   faCartShopping = faCartShopping;
+  faUser = faUser
   hideBtns!: boolean;
+  hideLogo!: boolean;
   routeSuscription!: Subscription;
 
   constructor(private dataService: DataService, private cookie: CookieService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.username = this.cookie.get('username');
     this.hideBtns = false;
+    this.hideLogo = false;
   }
 
   ngOnInit(): void {}
@@ -44,6 +47,7 @@ export class NavComponent implements OnInit {
         }
         setTimeout(() => {
           this.hideBtns = false;
+          this.hideLogo = false;
           this.routeSuscription.unsubscribe();
         }, 500);
       });
@@ -54,17 +58,22 @@ export class NavComponent implements OnInit {
     const width = window.innerWidth;
     if(width < 660) {
       this.hideBtns = true;
+      if(width < 455) {
+        this.hideLogo = true;
+      }
     }
   }
 
   unfocus() {
     if(this.searchContent.invalid) {
       this.hideBtns = false;
+      this.hideLogo = false;
     }
   }
 
   navigating() {
     this.searchContent.setValue('');
     this.hideBtns = false;
+    this.hideLogo = false;
   }
 }

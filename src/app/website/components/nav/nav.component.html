@@ -1,5 +1,5 @@
 <mat-toolbar class="nav">
-  <a mat-button [routerLink]="['/']"><img src="assets/gawrlogo.png" class="logo" (click)="navigating()"></a>
+  <a [class.hidden]="hideLogo" mat-button [routerLink]="['/']"><img src="assets/gawrlogo.png" class="logo" (click)="navigating()"></a>
 
   <div>
     <div class="search-bar">
@@ -12,7 +12,7 @@
 
   <div [class.hidden]="hideBtns">
     <div *ngIf="username; else login">
-      <a mat-button [routerLink]="['my-profile']" (click)="navigating()">{{ username }}</a>
+      <a mat-button [routerLink]="['my-profile']" (click)="navigating()"><fa-icon [icon]="faUser"></fa-icon></a>
       <a mat-button [routerLink]="['my-cart']" (click)="navigating()"><fa-icon [icon]="faCartShopping"></fa-icon></a>
     </div>
     <ng-template #login>

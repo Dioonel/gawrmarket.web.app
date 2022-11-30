@@ -1,28 +1,27 @@
 <h1 class="title">User info:</h1>
-<div class="container">
+<div class="my-container">
   <mat-card class="card">
-    <a *ngIf="edit" mat-button class="edit-btn" [routerLink]="['edit']"><fa-icon [icon]="faEdit" size="2xl"></fa-icon></a>
     <mat-card-header>
-      <img class="header-image" [src]="user.image">
+      <div>
+        <img class="header-image" [src]="user.image">
+        <a *ngIf="edit" mat-button [routerLink]="['edit']" class="edit">Edit profile</a>
+      </div>
       <div>
         <mat-card-title class="username"> {{ user.username }}</mat-card-title>
         <mat-card-subtitle class="role"> {{ user.role }} </mat-card-subtitle>
         <p class="p-cont">
-          <span *ngIf="user.country"> {{ user.country }} </span>
-          <span *ngIf="user.gender !== 'Other'"> {{ user.gender }} </span>
-          <span *ngIf="user.age"> {{ user.age }} yo </span>
+          <span *ngIf="user.country"><img [src]="'assets/flags-svgs/' + (user.country.toString().toLowerCase()) + '.svg'" class="flag-svg"></span>
+          <span *ngIf="user.gender !== 'Other'"><img [src]="'assets/' + user.gender + '.png'" class="gender-img"></span>
+          <span *ngIf="user.age" class="age"> {{ user.age }} yo </span>
         </p>
-        <p *ngIf="user.email"> {{ user.email }} </p>
         <p *ngIf="user.bio"> {{ user.bio }} </p>
       </div>
     </mat-card-header>
   </mat-card>
 </div>
 
-<br/>
-
 <h1 class="title">Posts:</h1>
-<div class="container">
+<div class="my-container">
   <div class="posts--grid">
     <mat-card class="post-card" *ngFor="let post of user.postings" [routerLink]="'/post/' + post._id">
       <img mat-card-image [src]="post.image" class="post-img">
@@ -33,4 +32,19 @@
     </mat-card>
   </div>
 </div>
-<br/>
+
+<br/><br/><br/>
+
+<div *ngIf="user.email || user.social">
+  <h1 class="title">Contact:</h1>
+  <div class="my-container">
+    <mat-card class="contact-card">
+      <mat-card-content>
+        <p *ngIf="user.email"><strong>Email:</strong> {{ user.email }}</p>
+        <p *ngIf="user.social"><strong>Social media: </strong> <a [href]="user.social | httpFilter" target="_blank">{{ user.social }}</a></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<br/><br/>

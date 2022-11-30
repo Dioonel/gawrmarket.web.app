@@ -6,3 +6,7 @@
 html {
   font-size: 62.5%;
 }
+html, body{
+  max-width: 100%;
+  overflow-x: hidden;
+}

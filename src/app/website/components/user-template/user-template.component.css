@@ -5,26 +5,36 @@
   margin-top: 25px;
 }
 
-.container{
+.my-container{
   display: flex;
   width: 100vw;
   justify-content: center;
+  margin: auto;
 }
 
-.edit-btn{
-  display: inline;
-  position: absolute;
+.edit{
+  font-size: 1.8em;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: block;
+  text-align: center;
+  width: 170px;
+  margin-left: 15px;
+  margin-top: 12px;
   bottom: 0;
-  right: 0;
+  left: 0;
 }
 
 .card {
   width: 80vw;
   max-width: 80vw;
-  min-height: 240px;
-  max-height: fit-content;
+  min-height: 275px;
   margin-top: 20px;
-  padding: 16px 0px;
+  /* padding: 8px 0px 0px 0px; */
+}
+
+mat-card-header{
+  padding: 10px 10px 0px 10px;
 }
 
 .header-image{
@@ -51,11 +61,25 @@
 
 .p-cont{
   display: flex;
-  width: fit-content;
-  flex-direction: row;
+  /* width: fit-content;
+  flex-direction: row; */
   gap: 10px
 }
 
+.flag-svg{
+  width: 25px;
+  height: 25px;
+}
+
+.gender-img{
+  width: 21px;
+  height: 21px;
+}
+
+.age{
+  font-weight: 500;
+  margin-top: 3px;
+}
 /* .p-cont span{
   margin-right: 10px;
 } */
@@ -79,6 +103,11 @@
   grid-gap: 15px;
 }
 
+.contact-card{
+  padding: 10px;
+  font-size: 1.2em;
+}
+
 @media screen and (1000px >= width >= 641px){
   .post-card {
     max-width: 28vw;
@@ -93,15 +122,19 @@
     height: 140px;
     width: 140px;
   }
+  .edit{
+    font-size: 1.6em;
+    width: 120px;
+    margin-left: 10px;
+  }
   .post-img{
     height: 80%;
     object-fit: cover;
   }
   .card{
-    width: 90vw;
-    max-width: 90vw;
-    height: auto;
-    overflow: auto;
+    width: 95vw;
+    max-width: 95vw;
+    min-height: 220px;
   }
 }
 
@@ -112,9 +145,6 @@
   .role, p{
     font-size: 1.4em;
   }
-  .p-cont{
-    display: block;
-  }
   .post-card{
     max-width: 80vw;
   }
@@ -123,5 +153,9 @@
     flex-direction: column;
     align-items: center;
     margin: 0;
+  }
+  .contact-card{
+    padding: 5px;
+    font-size: 1.1em;
   }
 }
