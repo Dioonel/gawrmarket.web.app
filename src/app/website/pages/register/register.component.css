@@ -1,0 +1,64 @@
+.container{
+  display: flex;
+  justify-content: center;
+  font-size: 1.4em;
+}
+
+.card{
+  margin-top: 15vh;
+  border: none;
+  width: 500px;
+  padding: 40px;
+  background: linear-gradient(90deg, rgb(41, 112, 159) 0%, rgb(78, 167, 234) 40%, rgb(143, 214, 255) 100%);
+}
+
+.card h1, h6, label {
+  color: white;
+}
+
+h1{
+  font-size: 2.2em;
+}
+
+h6{
+  font-size: 1em;
+  margin-bottom: 12px;
+}
+
+a {
+  color: white;
+  margin-top: 10px;
+}
+
+.btn{
+  font-size: 1.1em;
+}
+
+input{
+  font-size: 1em;
+}
+
+label{
+  font-weight: 500;
+}
+
+.span-error{
+  font-weight: 500;
+  color: red;
+  text-shadow: 0px 0px 10px white, 0px 0px 10px white;
+}
+
+.input-error{
+  border: 1px solid red;
+  background-color: rgb(255, 232, 232);
+}
+
+p{
+  margin-top: 8px;
+}
+
+@media screen and (width < 600px){
+  .card{
+    width: 90vw;
+  }
+}

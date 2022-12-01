@@ -1,24 +1,28 @@
 <div class="container">
-  <div class="form">
-    <h1>Login</h1> <br/>
-    <form (ngSubmit)="submitForm()" #myForm="ngForm">
-      <div>
-        <label for="username">Username</label>
-        <br/>
-        <input type="text" required minlength="5" [(ngModel)]="username" #myUsername="ngModel" name="username" id="username">
-        <span [class.active]="myUsername.invalid && username"> *Username is too short </span>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="text-center">
+          <h1>Login</h1>
+          <h6>Please enter username and password</h6>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input [class.input-error]="form.controls['username'].dirty && form.controls['username'].invalid" formControlName="username" type="text" class="form-control" id="username" autocomplete="off">
+            <span *ngIf="form.controls['username'].dirty && form.hasError('required', 'username')" class="span-error">Username is required</span>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input [class.input-error]="form.controls['password'].dirty && form.controls['password'].invalid" formControlName="password" type="password" class="form-control" id="password">
+            <span *ngIf="form.controls['password'].dirty && form.hasError('required', 'password')" class="span-error">Password is required</span>
+            <span *ngIf="form.controls['password'].dirty && form.hasError('minlength', 'password')" class="span-error">Password is too short</span>
+          </div>
+          <button type="submit" class="btn btn-primary" (click)="markFormGroupTouched()">Login</button>
+          <p *ngIf="error" class="span-error">Bad credentials or try again later</p>
+        </form>
+        <a [routerLink]="['/register']">New user? Register now!</a>
       </div>
-      <br/><br/>
-      <div>
-        <label for="password">Password</label>
-        <br/>
-        <input type="password" required minlength="8" [(ngModel)]="password" #myPassword="ngModel" name="password" id="password">
-        <span [class.active]="myPassword.invalid && password"> *Password is too short </span>
-      </div>
-      <br/><br/>
-      <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Done</button>
-      <div><span [class.active]="error">Bad credentials</span></div>
-    </form>
+    </div>
   </div>
-  <a routerLink="/register">I don't have an account. I want to register.</a>
 </div>

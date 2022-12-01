@@ -52,4 +52,13 @@ export class MyProfileComponent implements OnInit {
       });
     }
   }
+
+  logout(){
+    if(window.confirm('Are you sure you want to logout?')){
+      this.cookie.delete('user_id');
+      this.cookie.delete('username');
+      sessionStorage.removeItem('jwt');
+      window.location.href = '/';
+    }
+  }
 }
