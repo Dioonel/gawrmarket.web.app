@@ -1,5 +1,23 @@
-.img-post-small {
+/* .img-post-small {
   border: 1px solid black;
   width: 20%;
   margin: 0.6em;
+} */
+*{
+  font-size: 103%;
+}
+
+.title{
+  font-size: 1.1em;
+}
+
+.price{
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+label, .btn, .page-link, .title{
+  font-family: 'Roboto';
+  font-weight: 500;
 }
