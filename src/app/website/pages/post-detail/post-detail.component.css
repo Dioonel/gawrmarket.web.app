@@ -1,8 +1,52 @@
-.buy-btn {
+/* .buy-btn {
   padding: 10px;
   font-size: 2em;
 }
 
 .comment-img{
   width: 50px;
+} */
+
+.post-img{
+  object-fit: cover;
+}
+
+.quantity-label, .misc, .add-to-cart, .desc-card{
+  font-size: 1.2em;
+}
+
+.quantity-input{
+  font-size: 1.4em;
+  margin-left: 10px;
+  height: 28px;
+  width: 45px;
+  text-justify: center;
+  text-align: center;
+}
+
+.quantity-error{
+  font-size: 1.1em;
+  color: red;
+  margin-left: 10px;
+}
+
+.quantity-span{
+  font-size: 1.1em;
+  margin-left: 10px;
+}
+
+@media screen and (767px < width < 992px){
+  .post-display{
+    height: 420px;
+  }
+  .img-big-wrap{
+    height: 390px;
+  }
+}
+
+@media screen and (width < 600px) {
+  .img-big-wrap{
+    width: 92%;
+    height: 370px;
+  }
 }

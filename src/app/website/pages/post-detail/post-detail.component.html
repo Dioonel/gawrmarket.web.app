@@ -1,15 +1,148 @@
 <div *ngIf="!loading">
-  <app-img [img]="post.image"></app-img>
+  <!-- <app-img [img]="post.image"></app-img>
   <h1 class="title-post"> {{ post.title }} </h1>
   <h2> ${{ post.price }}.00 </h2>
   <p> Seller: <a [routerLink]="'/user/' + post.seller._id"> {{ post.seller.username }} </a></p>
   <div> {{ post.description }} </div>
 
   <button class="buy-btn" (click)="addToCart()"> Add to cart </button>
-  <input type="number" [(ngModel)]="quantity" min="1" max="100" required>
+  <input type="number" [(ngModel)]="quantity" min="1" max="100" required> -->
 
-  <br/><br/><br/>
+  <section class="section-content padding-y bg">
+    <div class="container">
+      <article class="card">
+        <div class="card-body post-display">
+          <div class="row">
+                <aside class="col-md-6">
+                  <article class="gallery-wrap">
+                    <div class="card img-big-wrap">
+                      <img class="post-img" [src]="post.image">
+                    </div> <!-- card img-big-wrap.// -->
+                    <!-- <div class="thumbs-wrap">
+                      <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                      <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                      <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                      <a href="#" class="item-thumb"> <img src="assets/images/items/3.jpg"></a>
+                    </div> thumbs-wrap .// -->
+                  </article> <!-- gallery-wrap .end// -->
+                </aside>
+                <main class="col-md-6">
+                  <article>
+                    <a class="text-primary btn-link">Category</a>
+                    <h2 class="title">{{ post.title }}</h2>
+                    <div>
+                      <ul class="rating-stars">
+                        <li  class="stars-active">
+                          <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </li>
+                        <li>
+                          <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </li>
+                      </ul>
+                      <span class="label-rating mr-3 text-muted">10/10</span>
+                      <!-- <a href="#" class="btn-link  mr-3 text-muted"> <i class="fa fa-heart"></i> Save for later </a>
+                      <a href="#" class="btn-link text-muted"> <i class="fa fa-book-open"></i> Compare </a> -->
+                    </div>
 
+                    <hr>
+
+                    <div class="mb-3 misc">
+                      <h5>Misc info:</h5>
+                      <ul class="list-dots mb-0">
+                        <li>Seller: <a [routerLink]="'/user/' + post.seller._id">{{ post.seller.username }}</a></li>
+                        <li>Created: {{ post.created_at.toString() | timeAgo }} ago</li>
+                        <li>Free shipping</li>
+                      </ul>
+                    </div>
+
+                    <!-- <div class="form-group">
+                      <label class="text-muted">Available sizes</label>
+                      <div>
+                        <label class="js-check btn btn-check active mr-1">
+                          <input type="radio" name="option_size" value="option1" checked="">
+                          <span>Small</span>
+                        </label>
+                        <label class="js-check btn btn-check mr-1">
+                          <input type="radio" name="option_size" value="option1">
+                          <span>Medium</span>
+                        </label>
+                        <label class="js-check btn btn-check mr-1">
+                          <input type="radio" name="option_size" value="option1">
+                          <span>Large</span>
+                        </label>
+                        <label class="js-check btn btn-check disabled">
+                          <input type="radio" name="option_size" disabled="" value="option1">
+                          <span>Babies</span>
+                        </label>
+                      </div>
+                    </div> -->
+                    <br/>
+                    <div>
+                      <label class="quantity-label">Quantity</label>
+                      <input class="quantity-input" matInput type="number" [(ngModel)]="quantity" min="1" max="100" required>
+                      <span class="quantity-error" *ngIf="quantityError">Invalid quantity.</span>
+                    </div>
+                    <br/>
+                    <div class="mb-3">
+                      <var class="price h4">{{ post.price * quantity | currency }}</var><span class="quantity-span" *ngIf="quantity > 1">({{ post.price | currency }} each one.)</span> <br/>
+                      <!-- <span class="monthly">$32.00 / monthly <a href="#" class="btn-link">installment </a></span> -->
+                    </div> <!-- price-detail-wrap .// -->
+
+                    <div class="mb-4">
+                      <!-- <a href="#" class="btn btn-primary mr-1">Buy now</a> -->
+                      <a class="btn btn-light add-to-cart" (click)="addToCart()">Add to cart</a>
+                    </div>
+
+                  </article> <!-- product-info-aside .// -->
+                </main> <!-- col.// -->
+              </div> <!-- row.// -->
+            </div> <!-- card-body.// -->
+          </article>
+          <article class="card mt-5 desc-card">
+            <div class="card-body">
+              <div class="row">
+                <aside class="col-md-6">
+                  <h5>Parameters</h5>
+                  <dl class="row">
+                    <dt class="col-sm-4">Coming soon</dt>
+                    <dd class="col-sm-8">More specs here...</dd>
+
+                    <dt class="col-sm-4">Coming soon</dt>
+                    <dd class="col-sm-8">More specs here...</dd>
+
+                    <dt class="col-sm-4">Coming soon</dt>
+                    <dd class="col-sm-8">More specs here...</dd>
+
+                    <dt class="col-sm-4">Coming soon</dt>
+                    <dd class="col-sm-8">More specs here...</dd>
+
+                    <dt class="col-sm-4">Coming soon</dt>
+                    <dd class="col-sm-8">More specs here...</dd>
+                  </dl>
+                </aside>
+                <aside class="col-md-6">
+                  <h5>Features</h5>
+                  <ul class="list-check">
+                    <li>Amazing features and high quality</li>
+                    <li>5 years warranty for this product</li>
+                    <li>Very epic feature...</li>
+                    <li>Very epic feature...</li>
+                    <li>Very epic feature...</li>
+                  </ul>
+                </aside>
+              </div> <!-- row.// -->
+            <hr>
+            <h5>Description</h5>
+            <p>{{ post.description }}</p> <br/>
+        </div> <!-- card-body.// -->
+      </article>
+    </div>
+
+  <br/><br/><br/><br/><br/>
   <h1> Comments </h1>
 
   <h2> Create a new comment </h2>
@@ -27,5 +160,10 @@
     </div>
     <br/> <br/>
   </div>
+
+  </section>
+
+  <br/>
+
 </div>
 

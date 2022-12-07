@@ -17,6 +17,7 @@ export class PostDetailComponent implements OnInit {
   post!: Post;
   comment = '';
   quantity: number = 1;
+  quantityError = false;
   userId = '';
   faXmark = faXmark
 
@@ -38,9 +39,14 @@ export class PostDetailComponent implements OnInit {
 
   addToCart() {
     if(this.post._id){
-      this.dataService.addToMyCart({ posting: this.post._id, quantity: this.quantity }).subscribe(data => {
-        console.log(data);
-      });
+      if(this.quantity > 0){
+        this.dataService.addToMyCart({ posting: this.post._id, quantity: this.quantity }).subscribe(data => {
+          console.log(data);
+        });
+      } else {
+        this.quantityError = true;
+        console.log('Quantity must be greater than 0');
+      }
     }
   }
 
