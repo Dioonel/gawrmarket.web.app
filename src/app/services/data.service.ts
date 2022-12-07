@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs';
 
-import { Post, FilterPost } from './../models/post.model';
-import { User } from '../models/user.model';
+import { Post, PostData, FilterPost } from './../models/post.model';
+import { User, UserData } from '../models/user.model';
 import { Cart } from '../models/cart.model';
 import { CreateItem } from '../models/item.model';
 import { Comment } from '../models/comment.model';
@@ -31,16 +31,16 @@ export class DataService {
   }
 
   getTimeline(filter: FilterPost) {
-    if(isEmpty(filter)){
-      return this.http.get<Post[]>(`${this.url}/postings`);
-    }
+    // if(isEmpty(filter)){
+    //   return this.http.get<PostData>(`${this.url}/postings`);
+    // }
     let params = new HttpParams();
-    // if(filter.limit) {
-    //   params = params.append('limit', filter.limit.toString());
-    // }
-    // if(filter.offset) {
-    //   params = params.append('offset', filter.offset.toString());
-    // }
+
+    params = params.append('limit', '18');
+
+    if(filter.offset) {
+      params = params.append('offset', filter.offset.toString());
+    }
     if(filter.minPrice) {
       params = params.append('minPrice', filter.minPrice);
     }
@@ -52,7 +52,7 @@ export class DataService {
     }
 
     console.log(params);
-    return this.http.get<Post[]>(`${this.url}/postings`, {params});
+    return this.http.get<PostData>(`${this.url}/postings`, {params});
   }
 
   getOnePost(id: string) {

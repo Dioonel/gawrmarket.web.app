@@ -40,10 +40,16 @@ export class NavComponent implements OnInit {
         if(params['maxPrice']) {
           myQuery['maxPrice'] = params['maxPrice'];
         }
+        if(params['offset']) {
+          myQuery['offset'] = 0;
+        }
         myQuery['title'] = this.searchContent.value;
         if(this.searchContent.valid) {
           this.searchContent.setValue('');
-          this.router.navigate(['timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
+          this.router.navigate(['timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'})
+          .then(() => {
+            window.location.reload();
+          })
         }
         setTimeout(() => {
           this.hideBtns = false;

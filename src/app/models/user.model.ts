@@ -283,3 +283,8 @@ export enum CountryCode {
   ZW,
   OTHER = '',
 }
+
+export class UserData {
+  data!: User[] | [];
+  count!: number;
+}

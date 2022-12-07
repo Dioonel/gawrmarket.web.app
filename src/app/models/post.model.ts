@@ -19,3 +19,8 @@ export class FilterPost {
   maxPrice?: number;
   title?: string;
 }
+
+export class PostData {
+  data!: Post[] | [];
+  count!: number;
+}

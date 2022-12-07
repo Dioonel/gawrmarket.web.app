@@ -9,6 +9,10 @@
 
 .title{
   font-size: 1.1em;
+  line-height: 22.17px;
+  height: 44.34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price{
