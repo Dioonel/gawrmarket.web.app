@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from '../../../services/data.service';
 import { Post } from '../../../models/post.model';
@@ -19,7 +19,10 @@ export class PostDetailComponent implements OnInit {
   quantity: number = 1;
   quantityError = false;
   userId = '';
-  faXmark = faXmark
+  loginErrorCart = false;
+  loginErrorComment = false;
+  addedToCartSuccess = false;
+  faTrashCan = faTrashCan;
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private cookie: CookieService) {
     this.userId = this.cookie.get('user_id');
@@ -41,7 +44,12 @@ export class PostDetailComponent implements OnInit {
     if(this.post._id){
       if(this.quantity > 0){
         this.dataService.addToMyCart({ posting: this.post._id, quantity: this.quantity }).subscribe(data => {
-          console.log(data);
+          if(data?.message){
+            this.loginErrorCart = true;
+          } else {
+            console.log(data);
+            this.addedToCartSuccess = true;
+          }
         });
       } else {
         this.quantityError = true;
@@ -53,16 +61,23 @@ export class PostDetailComponent implements OnInit {
   createComment() {
     if(this.comment.length > 0){
       this.dataService.createComment(this.post._id, { body: this.comment }).subscribe(data => {
-        console.log(data);
-        this.ngOnInit();
+        if(data?.message){
+          this.loginErrorComment = true;
+        } else {
+          console.log(data);
+          this.comment = '';
+          this.ngOnInit();
+        }
       });
     }
   }
 
   deleteComment(commentId: string) {
-    this.dataService.deleteComment(this.post._id, commentId).subscribe(data => {
-      console.log(data);
-      this.ngOnInit();
-    });
+    if(window.confirm('Are you sure you want to delete this comment?')){
+      this.dataService.deleteComment(this.post._id, commentId).subscribe(data => {
+        console.log(data);
+        this.ngOnInit();
+      });
+    }
   }
 }

@@ -72,7 +72,7 @@ export class DataService {
   }
 
   addToMyCart(item: CreateItem) {
-    return this.http.post<Cart>(`${this.url}/my-profile/cart`, item);
+    return this.http.post<Cart | any>(`${this.url}/my-profile/cart`, item);
   }
 
   popItem(postId: string){
@@ -92,7 +92,7 @@ export class DataService {
   }
 
   createComment(postId: string, comment: Object) {
-    return this.http.post<Comment>(`${this.url}/postings/${postId}`, comment);
+    return this.http.post<Comment | any>(`${this.url}/postings/${postId}`, comment);
   }
 
   deleteComment(postId: string, commentId: string) {

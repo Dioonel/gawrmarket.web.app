@@ -44,10 +44,11 @@ export class MyProfileComponent implements OnInit {
       this.dataService.deleteMyProfile().subscribe(data => {
         console.log(data);
         if(data){
-          this.cookie.delete('user_id');
-          this.cookie.delete('username');
-          sessionStorage.removeItem('jwt');
-          window.location.href = '/';
+          setTimeout(() => {
+            this.cookie.deleteAll();
+            sessionStorage.removeItem('jwt')
+            window.location.href = '/';
+          }, 250);
         }
       });
     }
@@ -55,10 +56,11 @@ export class MyProfileComponent implements OnInit {
 
   logout(){
     if(window.confirm('Are you sure you want to logout?')){
-      this.cookie.delete('user_id');
-      this.cookie.delete('username');
-      sessionStorage.removeItem('jwt');
-      window.location.href = '/';
+      setTimeout(() => {
+        this.cookie.deleteAll();
+        sessionStorage.removeItem('jwt');
+        window.location.href = '/';
+      }, 250);
     }
   }
 }

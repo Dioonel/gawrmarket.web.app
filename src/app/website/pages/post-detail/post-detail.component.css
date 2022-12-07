@@ -2,16 +2,17 @@
   padding: 10px;
   font-size: 2em;
 }
-
+*/
 .comment-img{
-  width: 50px;
-} */
-
-.post-img{
-  object-fit: cover;
+  width: 80px;
+  height: 80px;
 }
 
-.quantity-label, .misc, .add-to-cart, .desc-card{
+.post-img{
+  object-fit: contain;
+}
+
+.quantity-label, .misc, .add-to-cart, .desc-card, .btn-comment{
   font-size: 1.2em;
 }
 
@@ -24,15 +25,97 @@
   text-align: center;
 }
 
-.quantity-error{
+.my-error{
   font-size: 1.1em;
   color: red;
+  margin-left: 10px;
+}
+
+.success{
+  font-size: 1.1em;
+  color: green;
   margin-left: 10px;
 }
 
 .quantity-span{
   font-size: 1.1em;
   margin-left: 10px;
+}
+
+.comment-textarea{
+  font-size: 1.4em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  width: 450px;
+  height: 100px !important;
+  padding: 8px;
+}
+
+.comment-img{
+  margin-top: 3px;
+  margin-right: 10px;
+  border: 1px solid black;
+  border-radius: 8%;
+}
+
+.comment-post{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 35px;
+}
+
+.comments-section p {
+  line-height: 15px;
+}
+
+.comments-section .comment-author {
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 1px;
+  color: rgba(57,132,190,255);
+}
+
+.comments-section .comment-time {
+  font-style: italic;
+  font-size: 11px;
+  margin-left: 10px;
+  color: #888888;
+}
+
+.comments-section .comment-content {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 25px;
+  width: 100%;
+  height: auto;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.comment-add {
+  margin-bottom: 40px;
+}
+
+.btn-comment:disabled{
+  opacity: 0;
+}
+
+.delete-comment{
+  font-size: 1.9em;
+  color: black;
+  cursor: pointer;
+  margin-left: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.delete-comment:hover{
+  color: red;
 }
 
 @media screen and (767px < width < 992px){
@@ -44,9 +127,27 @@
   }
 }
 
-@media screen and (width < 600px) {
+@media screen and (width < 601px) {
   .img-big-wrap{
     width: 92%;
     height: 370px;
+  }
+  .comment-textarea{
+    width: 340px;
+  }
+  .comments-section .comment-content{
+    width: 66vw;
+  }
+  .comment-img{
+    width: 70px;
+    height: 70px;
+  }
+  .container-c{
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .section-2{
+    justify-content: left;
+    align-items: flex-start;
   }
 }
