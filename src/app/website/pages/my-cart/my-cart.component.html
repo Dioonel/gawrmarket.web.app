@@ -1,4 +1,4 @@
-<h1> Cart </h1>
+<!-- <h1> Cart </h1>
 <div *ngIf="!loading">
   <div *ngFor="let item of cart?.items">
     <app-img [img]="item.posting.image"></app-img>
@@ -9,4 +9,54 @@
   </div>
   <br/><br/>
   <h1> Total: ${{ cart.total }}.00 </h1>
+</div> -->
+
+<div class="container cart-page" *ngIf="!loading">
+  <table class="table-cart">
+    <tr>
+      <th>Product</th>
+      <th class="quantity">Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <tr *ngFor="let item of cart?.items">
+      <td>
+        <div class="product-info">
+          <a [routerLink]="['/post/' + item.posting._id]"><img class="product-img" [src]="item.posting.image"></a>
+          <div>
+            <p>{{ item.posting.title }}</p>
+            <a class="remove" (click)="popItem(item.posting._id)">Remove item</a>
+          </div>
+        </div>
+      </td>
+      <td class="quantity">{{ item.quantity }}</td>
+      <td>
+        <div class="price-div">
+          <small>{{ item.subtotal | currency: 'USD':'symbol': '1.0-2' }}</small><br/>
+          <span class="small-quantity">x{{ item.quantity }}<br/></span>
+          <span class="price-each">{{ item.posting.price | currency: 'USD':'symbol': '1.0-2' }}
+            <span class="tooltip">Price per unit</span>
+          </span>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <div class="total-price" *ngIf="cart.total">
+    <table>
+      <tr>
+        <td>Subtotal</td>
+        <td>{{ cart.total | currency: 'USD':'symbol': '1.0-2' }}</td>
+      </tr>
+      <tr>
+        <td class="tax-t">Tax
+          <span class="tooltip2">Argentina tax: 75%</span>
+        </td>
+        <td> {{ cart.total * .75 | currency: 'USD':'symbol': '1.0-2' }} </td>
+      </tr>
+      <tr class="total">
+        <td>Total</td>
+        <td> {{ (cart.total + cart.total * .75) | currency: 'USD':'symbol': '1.0-2' }}</td>
+      </tr>
+    </table>
+  </div>
 </div>

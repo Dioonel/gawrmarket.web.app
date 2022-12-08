@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from '../../../services/data.service';
 import { Cart } from '../../../models/cart.model';
@@ -12,7 +12,7 @@ import { Cart } from '../../../models/cart.model';
 export class MyCartComponent implements OnInit {
   loading = true;
   cart!: Cart;
-  faXmark = faXmark;
+  faTrashCan = faTrashCan;
 
   constructor(private dataService: DataService) { }
 
