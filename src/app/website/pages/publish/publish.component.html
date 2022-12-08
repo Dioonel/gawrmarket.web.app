@@ -1,9 +1,56 @@
-<h1>Publish</h1>
-
-<form onsubmit="return false" (submit)="publish()">
-  <input type="text" placeholder="Title" [(ngModel)]="title" name="title" required> <br/>
-  <input type="text" placeholder="Description" [(ngModel)]="description" name="description" required> <br/>
-  <input type="number" placeholder="Price" [(ngModel)]="price" name="price" required> <br/>
-  <input type="text" placeholder="Image" [(ngModel)]="image" name="image" required> <br/>
-  <input type="submit" value="create">
+<form class="form-container" [formGroup]="form" (ngSubmit)="createPost()">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Create a post</mat-card-title>
+    </mat-card-header>
+    <br/>
+    <mat-card-content>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput type="text" placeholder="Title..." formControlName="title">
+            <mat-error *ngIf="form.hasError('required', 'title')">Title can't be empty</mat-error>
+            <mat-error *ngIf="form.hasError('minlength', 'title')">Title is too short</mat-error>
+            <mat-error *ngIf="form.hasError('maxlength', 'title')">Title is too long</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-md-12">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput cdkTextareaAutosize rows="3" placeholder="Description" formControlName="description"></textarea>
+            <mat-error *ngIf="form.hasError('required', 'description')">Description can't be empty</mat-error>
+            <mat-error *ngIf="form.hasError('minlength', 'description')">Description is too short</mat-error>
+            <mat-error *ngIf="form.hasError('maxlength', 'description')">Description is too long</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-md-8">
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" placeholder="Price" formControlName="price" min="1">
+            <mat-error *ngIf="form.hasError('required', 'price')">Price can't be empty</mat-error>
+            <mat-error *ngIf="form.hasError('min', 'price')">Price must be a positive number</mat-error>
+          </mat-form-field>
+        </div>
+      </div><br/>
+      <div class="col-md-6"> <br/>
+        <mat-label class="single-label">Product image</mat-label> <br/>
+        <span *ngIf="errorImg" class="error-img">Try another image or format.<br/>If error persists contact the developer.<br/></span>
+        <img class="thumbnail" [src]="form.value['image']" (click)="selectBanner.click()" referrerpolicy="no-referrer">
+        <input type="file" accept="image/*" (change)="getImage($event)" #selectBanner hidden>
+      </div><br/>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Create</button>
+      <a *ngIf="createdPost" [routerLink]="['/post/' + createdPost._id]" class="success">Created successfully.<br/>Click here to check the post.</a>
+      <a *ngIf="loginError" [routerLink]="['/login']" class="error-msg">You must be LOGGED IN to do this.<br/>Click here to login.</a>
+    </mat-card-actions>
+  </mat-card>
 </form>
+

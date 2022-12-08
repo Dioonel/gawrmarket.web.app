@@ -80,7 +80,7 @@ export class DataService {
   }
 
   publishNewPost(post: any) {
-    return this.http.post<Post>(`${this.url}/postings`, post);
+    return this.http.post<Post | any>(`${this.url}/postings`, post);
   }
 
   createUser(user: any) {

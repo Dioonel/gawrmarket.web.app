@@ -13,8 +13,10 @@
 }
 
 .edit{
+  color: rgb(30, 78, 143);
   font-size: 1.8em;
   font-weight: 500;
+  text-decoration: underline;
   letter-spacing: 1px;
   display: block;
   text-align: center;
