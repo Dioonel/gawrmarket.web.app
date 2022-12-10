@@ -11,6 +11,7 @@ import { Cart } from '../../../models/cart.model';
 })
 export class MyCartComponent implements OnInit {
   loading = true;
+  loadingRemove = false;
   cart!: Cart;
   faTrashCan = faTrashCan;
 
@@ -26,9 +27,11 @@ export class MyCartComponent implements OnInit {
 
   popItem(postId: string) {
     if(postId){
+      this.loadingRemove = true;
       this.dataService.popItem(postId).subscribe(data => {
         console.log(data);
         this.ngOnInit();
+        this.loadingRemove = false;
       });
     }
   }

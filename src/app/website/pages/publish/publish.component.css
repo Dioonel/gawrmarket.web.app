@@ -66,6 +66,16 @@ mat-error{
   text-decoration: underline;
 }
 
+.flex-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.spinner{
+  margin-left: 15px;
+}
+
 @media screen and (width < 1000px) {
   .mat-mdc-card {
     width: 80%;

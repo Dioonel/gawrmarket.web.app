@@ -1,22 +1,7 @@
-<!-- <br/>
-<h3> Filters </h3>
-<span> Min price: </span> <input type="number" placeholder="min" [(ngModel)]="minPrice" /> <br/>
-<span> Max price: </span> <input type="number" placeholder="max" [(ngModel)]="maxPrice" /> <br/>
-<button (click)="filter()">APPLY</button>
-<a href="/timeline"><button>RESET</button></a>
-<br/><br/>
-<h1> Timeline </h1>
-<div *ngIf="!loading">
-  <div *ngFor="let post of data">
-    <a [routerLink]="'/post/' + post._id">
-      <app-img [img]="post.image"></app-img>
-      <h1 class="title-post"> {{ post.title }} </h1>
-      <h2 class="price-post"> ${{ post.price }}.00 </h2>
-    </a>
-    <br/>
-  </div>
+<div class="spinner-div">
+  <mat-progress-spinner *ngIf="loading" [mode]="'indeterminate'" class="spinner">
+  </mat-progress-spinner>
 </div>
--->
 
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">

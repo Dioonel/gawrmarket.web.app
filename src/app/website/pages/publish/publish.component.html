@@ -39,17 +39,23 @@
           </mat-form-field>
         </div>
       </div><br/>
-      <div class="col-md-6"> <br/>
-        <mat-label class="single-label">Product image</mat-label> <br/>
-        <span *ngIf="errorImg" class="error-img">Try another image or format.<br/>If error persists contact the developer.<br/></span>
-        <img class="thumbnail" [src]="form.value['image']" (click)="selectBanner.click()" referrerpolicy="no-referrer">
-        <input type="file" accept="image/*" (change)="getImage($event)" #selectBanner hidden>
+      <div class="col-md-6 flex-div"> <br/>
+        <div>
+          <mat-label class="single-label">Product image</mat-label> <br/>
+          <span *ngIf="errorImg" class="error-img">Try another image or format.<br/>If error persists contact the developer.<br/></span>
+          <img class="thumbnail" [src]="form.value['image']" (click)="selectBanner.click()" referrerpolicy="no-referrer">
+          <input type="file" accept="image/*" (change)="getImage($event)" #selectBanner hidden>
+        </div>
+        <mat-progress-spinner *ngIf="loadingImg" [mode]="'indeterminate'" [diameter]="64" class="spinner"></mat-progress-spinner>
       </div><br/>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit">Create</button>
-      <a *ngIf="createdPost" [routerLink]="['/post/' + createdPost._id]" class="success">Created successfully.<br/>Click here to check the post.</a>
-      <a *ngIf="loginError" [routerLink]="['/login']" class="error-msg">You must be LOGGED IN to do this.<br/>Click here to login.</a>
+      <div class="flex-div">
+        <button mat-raised-button color="primary" type="submit">Create</button>
+        <a *ngIf="createdPost" [routerLink]="['/post/' + createdPost._id]" class="success">Created successfully.<br/>Click here to check the post.</a>
+        <a *ngIf="loginError" [routerLink]="['/login']" class="error-msg">You must be LOGGED IN to do this.<br/>Click here to login.</a>
+      </div>
+      <mat-progress-spinner *ngIf="loadingSubmit" [mode]="'indeterminate'" [diameter]="30" class="spinner"></mat-progress-spinner>
     </mat-card-actions>
   </mat-card>
 </form>

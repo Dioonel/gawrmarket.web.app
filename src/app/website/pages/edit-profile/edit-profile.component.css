@@ -30,6 +30,16 @@
   font-size: 1.6em;
 }
 
+.flex-div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.spinner{
+  margin-left: 15px;
+}
+
 @media screen and (width < 800px) {
   .form-container{
     margin: 40px 30px;
@@ -40,5 +50,11 @@
   .thumbnail{
     width: 240px;
     height: 240px;
+  }
+  mat-card{
+    width: 100vw;
+  }
+  .form-container{
+    margin: 45px 0px;
   }
 }

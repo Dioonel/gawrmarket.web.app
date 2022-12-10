@@ -13,9 +13,10 @@ import { ImageService } from './../../../services/image.service';
 export class PublishComponent implements OnInit {
   form!: FormGroup;
   loadingImg = false;
+  loadingSubmit = false;
   errorImg = false;
   loginError = false;
-  createdPost!: Post;
+  createdPost!: Post | null;
 
   constructor(private dataService: DataService, private formBuilder: FormBuilder, private imageService: ImageService) {}
 
@@ -34,12 +35,16 @@ export class PublishComponent implements OnInit {
 
   createPost(){
     if(this.form.valid){
+      this.createdPost = null;
+      this.loadingSubmit = true;
       this.dataService.publishNewPost(this.form.value).subscribe(data => {
         if(data?.message){
           this.loginError = true;
+          this.loadingSubmit = false;
         } else {
           console.log(data);
           this.createdPost = data;
+          this.loadingSubmit = false;
         }
       });
     }

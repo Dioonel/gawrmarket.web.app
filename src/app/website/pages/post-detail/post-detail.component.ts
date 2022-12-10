@@ -14,6 +14,8 @@ import { Post } from '../../../models/post.model';
 })
 export class PostDetailComponent implements OnInit {
   loading = true;
+  loadingCart = false;
+  loadingComment = false;
   post!: Post;
   comment = '';
   quantity: number = 1;
@@ -43,12 +45,16 @@ export class PostDetailComponent implements OnInit {
   addToCart() {
     if(this.post._id){
       if(this.quantity > 0){
+        this.addedToCartSuccess = false;
+        this.loadingCart = true;
         this.dataService.addToMyCart({ posting: this.post._id, quantity: this.quantity }).subscribe(data => {
           if(data?.message){
             this.loginErrorCart = true;
+            this.loadingCart = false;
           } else {
             console.log(data);
             this.addedToCartSuccess = true;
+            this.loadingCart = false;
           }
         });
       } else {
@@ -60,13 +66,16 @@ export class PostDetailComponent implements OnInit {
 
   createComment() {
     if(this.comment.length > 0){
+      this.loadingComment = true;
       this.dataService.createComment(this.post._id, { body: this.comment }).subscribe(data => {
         if(data?.message){
           this.loginErrorComment = true;
+          this.loadingComment = false;
         } else {
           console.log(data);
           this.comment = '';
           this.ngOnInit();
+          this.loadingComment = false;
         }
       });
     }

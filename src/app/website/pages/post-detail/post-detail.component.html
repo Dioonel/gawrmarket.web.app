@@ -1,3 +1,8 @@
+<div class="spinner-div">
+  <mat-progress-spinner *ngIf="loading" [mode]="'indeterminate'" class="spinner">
+  </mat-progress-spinner>
+</div>
+
 <div *ngIf="!loading">
   <!-- <app-img [img]="post.image"></app-img>
   <h1 class="title-post"> {{ post.title }} </h1>
@@ -95,6 +100,9 @@
                     <div class="mb-4">
                       <!-- <a href="#" class="btn btn-primary mr-1">Buy now</a> -->
                       <a class="btn btn-light add-to-cart" (click)="addToCart()">Add to cart</a>
+                      <div class="mini-spinner-div">
+                        <mat-progress-spinner *ngIf="loadingCart" [mode]="'indeterminate'" [diameter]="30" class="spinner"></mat-progress-spinner>
+                      </div>
                       <a *ngIf="loginErrorCart" class="my-error" [routerLink]="['/login']">Please, LOGIN first.</a>
                       <span *ngIf="addedToCartSuccess" class="success">Added to cart.</span>
                     </div>
@@ -169,6 +177,9 @@
           <form onsubmit="return false" (submit)="createComment()">
             <textarea class="comment-textarea" matInput cdkTextareaAutosize placeholder="Write a new comment here..." [(ngModel)]="comment" name="comment"></textarea> <br/>
             <button type="sumbit" class="btn btn-info btn-comment" [disabled]="comment.trim().length < 1">Submit comment</button>
+            <div class="mini-spinner-div">
+              <mat-progress-spinner *ngIf="loadingComment" [mode]="'indeterminate'" [diameter]="30" class="spinner"></mat-progress-spinner>
+            </div>
             <a *ngIf="loginErrorComment" class="my-error" [routerLink]="['/login']">Please, LOGIN first.</a>
           </form>
         </div>

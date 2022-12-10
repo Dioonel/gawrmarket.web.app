@@ -25,6 +25,7 @@ export class EditProfileComponent implements OnInit {
   loading = true;
   imgUpdate = false;
   loadingImg = false;
+  loadingSubmit = false;
   user!: User;
 
   constructor(private dataService: DataService, private imageService: ImageService,private formBuilder: FormBuilder, private router: Router) {}
@@ -53,6 +54,7 @@ export class EditProfileComponent implements OnInit {
 
   updateProfile() {
     if(this.form.valid) {
+      this.loadingSubmit = true;
       let changes = this.form.value;
       if(changes.email === this.user.email || changes.email === '') delete changes.email;
       if(changes.social === this.user.social || changes.social === '') delete changes.social;
@@ -72,10 +74,11 @@ export class EditProfileComponent implements OnInit {
       if(!isEmpty(changes)) {
         console.log(changes);
         this.dataService.updateMyProfile(this.form.value).subscribe(data => {
+          this.loadingSubmit = false;
           this.router.navigate(['/my-profile']);
         });
       }
-      // no changes
+      this.loadingSubmit = false;
       this.router.navigate(['/my-profile']);
     }
     // configure invalid messages

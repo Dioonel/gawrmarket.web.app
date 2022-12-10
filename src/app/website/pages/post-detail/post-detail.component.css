@@ -118,6 +118,12 @@ a:hover{
   color: red;
 }
 
+.mini-spinner-div{
+  position: absolute;
+  display: inline-block;
+  margin-left: 10px;
+}
+
 @media screen and (767px < width < 992px){
   .post-display{
     height: 420px;

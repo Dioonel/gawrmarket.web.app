@@ -5,7 +5,7 @@
 }
 
 .cart-page{
-  margin: 80px auto;
+  margin: 30px auto;
 }
 
 table{
@@ -164,6 +164,12 @@ td:last-child, th:last-child{
 td .remove:hover{
   text-decoration: underline;
   cursor: pointer;
+}
+
+.mini-spinner-div{
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
 }
 
 @media screen and (width < 601px){

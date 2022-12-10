@@ -10,3 +10,14 @@ html, body{
   max-width: 100%;
   overflow-x: hidden;
 }
+
+.spinner-div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.spinner circle {
+  stroke:rgb(57,132,190);
+}

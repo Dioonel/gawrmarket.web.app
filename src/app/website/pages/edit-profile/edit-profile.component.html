@@ -1,3 +1,8 @@
+<div class="spinner-div">
+  <mat-progress-spinner *ngIf="loading" [mode]="'indeterminate'" class="spinner">
+  </mat-progress-spinner>
+</div>
+
 <div *ngIf="!loading">
   <form class="form-container" [formGroup]="form" (ngSubmit)="updateProfile()">
     <mat-card>
@@ -46,15 +51,19 @@
               <mat-radio-button value="Other"> Other </mat-radio-button>
             </mat-radio-group>
           </div>
-          <div class="col-md-6"> <br/>
-            <mat-label class="single-label">Profile picture</mat-label> <br/>
-            <img class="thumbnail" [src]="user.image" (click)="selectBanner.click()" referrerpolicy="no-referrer">
-            <input type="file" accept="image/*" (change)="getImage($event)" #selectBanner hidden>
+          <div class="col-md-6 flex-div"> <br/>
+            <div>
+              <mat-label class="single-label">Profile picture</mat-label> <br/>
+              <img class="thumbnail" [src]="user.image" (click)="selectBanner.click()" referrerpolicy="no-referrer">
+              <input type="file" accept="image/*" (change)="getImage($event)" #selectBanner hidden>
+            </div>
+            <mat-progress-spinner *ngIf="loadingImg" [mode]="'indeterminate'" [diameter]="60" class="spinner"></mat-progress-spinner>
           </div>
         </div>
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions class="flex-div">
         <button mat-raised-button color="primary" type="submit">Save</button>
+        <mat-progress-spinner *ngIf="loadingSubmit" [mode]="'indeterminate'" [diameter]="30" class="spinner"></mat-progress-spinner>
       </mat-card-actions>
     </mat-card>
   </form>
