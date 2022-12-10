@@ -16,6 +16,7 @@
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>E-mail</mat-label>
               <input matInput type="email" placeholder="E-mail" formControlName="email">
+              <mat-error *ngIf="form.hasError('email', 'email')">E-mail syntax is wrong</mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
@@ -30,6 +31,7 @@
             <mat-form-field class="full-width" appearance="outline">
               <mat-label>Bio</mat-label>
               <textarea matInput cdkTextareaAutosize placeholder="Bio" formControlName="bio"></textarea>
+              <mat-error *ngIf="form.hasError('maxlength', 'bio')">Bio is too long</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -38,6 +40,7 @@
             <mat-form-field appearance="outline">
               <mat-label>Age</mat-label>
               <input matInput type="number" placeholder="Age" formControlName="age" min="1">
+              <mat-error *ngIf="form.hasError('min', 'age')">Age must be a positive number</mat-error>
             </mat-form-field>
           </div>
           <div class="col-md-6">
@@ -51,7 +54,7 @@
               <mat-radio-button value="Other"> Other </mat-radio-button>
             </mat-radio-group>
           </div>
-          <div class="col-md-6 flex-div"> <br/>
+          <div class="col-md-6 flex-div" style="margin-top:15px;"> <br/>
             <div>
               <mat-label class="single-label">Profile picture</mat-label> <br/>
               <img class="thumbnail" [src]="user.image" (click)="selectBanner.click()" referrerpolicy="no-referrer">
