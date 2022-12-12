@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,9 +27,10 @@ import { InterceptorService } from './services/interceptor.service';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    QuicklinkModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSelectCountryModule.forRoot('en')
+    MatSelectCountryModule.forRoot('en'),
   ],
   providers: [
     CookieService,

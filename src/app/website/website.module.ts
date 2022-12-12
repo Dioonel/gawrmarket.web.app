@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { QuicklinkModule } from 'ngx-quicklink';
 
 import { SharedModule } from './../shared/shared.module';
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -55,6 +56,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
         WebsiteRoutingModule,
         HttpClientModule,
         FormsModule,
+        QuicklinkModule,
         FontAwesomeModule,
         SharedModule,
         MatToolbarModule,
