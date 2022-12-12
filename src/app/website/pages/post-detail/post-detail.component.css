@@ -25,6 +25,18 @@
   text-align: center;
 }
 
+/* .menu-div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+} */
+
+.menu-btn{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 .my-error{
   font-size: 1.1em;
   color: red;

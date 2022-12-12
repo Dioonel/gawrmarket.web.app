@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgModel } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faTrashCan, faCog, faPencil } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from '../../../services/data.service';
 import { Post } from '../../../models/post.model';
@@ -25,6 +25,8 @@ export class PostDetailComponent implements OnInit {
   loginErrorComment = false;
   addedToCartSuccess = false;
   faTrashCan = faTrashCan;
+  faCog = faCog;
+  faPencil = faPencil;
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private cookie: CookieService) {
     this.userId = this.cookie.get('user_id');
@@ -86,6 +88,15 @@ export class PostDetailComponent implements OnInit {
       this.dataService.deleteComment(this.post._id, commentId).subscribe(data => {
         console.log(data);
         this.ngOnInit();
+      });
+    }
+  }
+
+  deletePost(){
+    if(window.confirm('Are you sure you want to delete this post?')){
+      this.dataService.deletePost(this.post._id).subscribe(data => {
+        console.log(data);
+        window.location.href = '/';
       });
     }
   }

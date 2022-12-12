@@ -107,6 +107,22 @@
                       <span *ngIf="addedToCartSuccess" class="success">Added to cart.</span>
                     </div>
 
+                    <div *ngIf="post.seller._id === this.userId" class="menu-div">
+                      <a class="btn btn-light add-to-cart" [matMenuTriggerFor]="menu">Configure
+                        <fa-icon [icon]="faCog"></fa-icon>
+                      </a>
+                      <mat-menu #menu="matMenu">
+                        <button mat-menu-item disabled>
+                          <fa-icon [icon]="faPencil"></fa-icon>
+                          <span> Update</span>
+                        </button>
+                        <button mat-menu-item (click)="deletePost()">
+                          <fa-icon [icon]="faTrashCan"></fa-icon>
+                          <span> Delete</span>
+                        </button>
+                      </mat-menu>
+                    </div>
+
                   </article> <!-- product-info-aside .// -->
                 </main> <!-- col.// -->
               </div> <!-- row.// -->

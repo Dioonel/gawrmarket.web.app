@@ -89,8 +89,8 @@ mat-card-header{
 }
 
 .post-img{
-  height: 84%;
-  object-fit: cover;
+  height: 290px;
+  object-fit: contain;
 }
 
 .posts--grid {
