@@ -68,7 +68,7 @@ export class DataService {
   }
 
   getMyCart() {
-    return this.http.get<Cart | any>(`${this.url}/my-profile/cart`);
+    return this.http.get<Cart>(`${this.url}/my-profile/cart`);
   }
 
   addToMyCart(item: CreateItem) {
