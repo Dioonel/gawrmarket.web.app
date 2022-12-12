@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from '../../../services/data.service';
@@ -12,16 +13,20 @@ import { Cart } from '../../../models/cart.model';
 export class MyCartComponent implements OnInit {
   loading = true;
   loadingRemove = false;
-  cart!: Cart;
+  cart!: Cart | any;
   faTrashCan = faTrashCan;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.dataService.getMyCart().subscribe(data => {
       console.log(data);
       this.cart = data;
       this.loading = false;
+
+      if(this.cart?.message === 'Please login first'){
+        this.router.navigate(['/login']);
+      }
     });
   }
 
