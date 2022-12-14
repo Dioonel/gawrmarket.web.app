@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
             sessionStorage.setItem('jwt', loginData.token);
             this.cookie.set('user_id', loginData.user._id);
             this.cookie.set('username', loginData.user.username);
-            this.router.navigate(['/my-profile']);
+            location.href = '/my-profile';
           });
         }
       }, error => {
