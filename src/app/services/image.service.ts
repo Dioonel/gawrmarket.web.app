@@ -8,7 +8,8 @@ import { ImgurResponse } from './../models/imgur.model';
 })
 export class ImageService {
   private url: string = 'https://api.imgur.com/3/image';
-  private clientId: string = 'd105a49dd2e1d71';
+  private clientId: string = 'dd4e2ced57d2fa1';
+  //private clientId: string = 'd105a49dd2e1d71';
 
   constructor(private http: HttpClient) { }
 

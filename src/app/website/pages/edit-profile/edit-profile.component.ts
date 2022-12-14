@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { Country } from '@angular-material-extensions/select-country';
 
 import { DataService } from './../../../services/data.service';
@@ -28,7 +29,7 @@ export class EditProfileComponent implements OnInit {
   loadingSubmit = false;
   user!: User;
 
-  constructor(private dataService: DataService, private imageService: ImageService,private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private dataService: DataService, private imageService: ImageService,private formBuilder: FormBuilder, private router: Router, private cookie: CookieService) {}
 
   ngOnInit(): void {
     this.dataService.getMyProfile().subscribe(data => {
@@ -97,6 +98,22 @@ export class EditProfileComponent implements OnInit {
       }
     } catch (err) {
       console.log(err);
+      this.loadingImg = false;
+    }
+  }
+
+  async deleteProfile(){
+    if(window.confirm('Are you sure you want to delete your account?')){
+      this.dataService.deleteMyProfile().subscribe(data => {
+        console.log(data);
+        if(data){
+          setTimeout(() => {
+            this.cookie.deleteAll();
+            sessionStorage.removeItem('jwt')
+            window.location.href = '/';
+          }, 250);
+        }
+      });
     }
   }
 }

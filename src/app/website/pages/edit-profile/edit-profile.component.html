@@ -68,6 +68,9 @@
         <button mat-raised-button color="primary" type="submit">Save</button>
         <mat-progress-spinner *ngIf="loadingSubmit" [mode]="'indeterminate'" [diameter]="30" class="spinner"></mat-progress-spinner>
       </mat-card-actions>
+      <div class="delete-div">
+        <a (click)="deleteProfile()" class="btn btn-danger">Delete profile</a>
+      </div>
     </mat-card>
   </form>
 </div>

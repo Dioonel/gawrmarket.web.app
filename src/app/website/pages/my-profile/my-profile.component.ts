@@ -30,30 +30,6 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  deletePost(postId: string){
-    if(postId){
-      this.dataService.deletePost(postId).subscribe(data => {
-        console.log(data);
-        this.ngOnInit();
-      });
-    }
-  }
-
-  deleteAccount(){
-    if(window.confirm('Are you sure you want to delete your account?')){
-      this.dataService.deleteMyProfile().subscribe(data => {
-        console.log(data);
-        if(data){
-          setTimeout(() => {
-            this.cookie.deleteAll();
-            sessionStorage.removeItem('jwt')
-            window.location.href = '/';
-          }, 250);
-        }
-      });
-    }
-  }
-
   logout(){
     if(window.confirm('Are you sure you want to logout?')){
       setTimeout(() => {

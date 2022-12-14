@@ -51,6 +51,10 @@ body {
 .search-btn:after {
 	transition: all 0.25s ease-out;
 }
+.search-bar input::placeholder{
+  color: transparent;
+}
+
 .search-bar input,
 .search-btn {
 	width: 3em;
@@ -69,6 +73,10 @@ body {
 .search-bar input:not(:focus) + .search-btn:focus {
 	outline: transparent;
 }
+.search-bar input:focus::placeholder{
+  color: #828282;
+}
+
 .search-bar {
 	margin: auto;
 	padding: 1.5em;

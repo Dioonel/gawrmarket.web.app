@@ -44,6 +44,23 @@
   margin-left: 15px;
 }
 
+.delete-div{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.btn-danger{
+  font-size: 1.7em;
+  float: right;
+  margin: 6px;
+  color: white !important;
+}
+
+.btn-danger:hover{
+  background-color: rgb(164, 37, 37);
+}
+
 @media screen and (width < 800px) {
   .form-container{
     margin: 40px 30px;

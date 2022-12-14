@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { PostDetailComponent } from './pages/post-detail/post-detail.component';
 import { UserComponent } from './pages/user/user.component';
 import { PublishComponent } from './pages/publish/publish.component';
+import { SecretComponent } from './pages/secret/secret.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       { path: 'post/:id', component: PostDetailComponent },
       { path: 'user/:id', component: UserComponent },
-      { path: 'publish', component: PublishComponent }
+      { path: 'publish', component: PublishComponent },
+      { path: 'owo', component: SecretComponent },
     ]
   },
 ];

@@ -17,10 +17,11 @@
   <div class="home-nav">
     <a mat-button [routerLink]="['timeline']">Products</a>
     <a mat-button [routerLink]="['users']">Users</a>
-    <a mat-button href="#">Sales</a>
-    <a mat-button href="#">owo uwu</a>
+    <a mat-button (click)="sales()">Sales</a>
+    <a mat-button [routerLink]="['owo']">owo uwu</a>
     <a mat-button [routerLink]="['publish']">Publish</a>
   </div>
+  <span *ngIf="salesMsg" class="salesMsg">No sales available right now :(</span>
   <h1 class="title"> Gawr Marketplace </h1>
 
 </div>

@@ -33,6 +33,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { UserTemplateComponent } from './components/user-template/user-template.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { UsersComponent } from './pages/users/users.component';
+import { SecretComponent } from './pages/secret/secret.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { UsersComponent } from './pages/users/users.component';
         UserTemplateComponent,
         EditProfileComponent,
         UsersComponent,
+        SecretComponent,
 
     ],
     imports: [
