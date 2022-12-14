@@ -33,7 +33,6 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getMyProfile().subscribe(data => {
-      console.log(data);
       this.user = data;
       this.defaultCountry.alpha2Code = data.country.toString();
       this.buildForm();
@@ -73,7 +72,6 @@ export class EditProfileComponent implements OnInit {
       }
 
       if(!isEmpty(changes)) {
-        console.log(changes);
         this.dataService.updateMyProfile(this.form.value).subscribe(data => {
           this.loadingSubmit = false;
           this.router.navigate(['/my-profile']);
@@ -89,7 +87,6 @@ export class EditProfileComponent implements OnInit {
     try{
       let input = event.target as HTMLInputElement;
       if(input.files && input.files.length > 0){
-        console.log(input.files[0]);
         this.loadingImg = true;
         let image: File = input.files[0];
         this.user.image = await this.imageService.uploadImage(image);
@@ -105,7 +102,6 @@ export class EditProfileComponent implements OnInit {
   async deleteProfile(){
     if(window.confirm('Are you sure you want to delete your account?')){
       this.dataService.deleteMyProfile().subscribe(data => {
-        console.log(data);
         if(data){
           setTimeout(() => {
             this.cookie.deleteAll();

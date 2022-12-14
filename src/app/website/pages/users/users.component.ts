@@ -25,10 +25,8 @@ export class UsersComponent implements OnInit{
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      console.log(params);
       this.dataService.getAllUsers(params).subscribe(res => {
         this.data = res;
-        console.log(this.data);
         this.loading = false;
         this.paginateConfig(Math.floor(this.data.count / 18));
       }, err => {

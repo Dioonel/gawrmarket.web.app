@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
       }
       this.dataService.createUser(user).subscribe(data => {
         if(data !== null){
-          console.log(data);
           this.dataService.login(user.username, user.password).subscribe(loginData => {
             sessionStorage.setItem('jwt', loginData.token);
             this.cookie.set('user_id', loginData.user._id);

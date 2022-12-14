@@ -20,7 +20,6 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getMyProfile().subscribe(data => {
-      console.log(data);
       this.user = data;
       this.loading = false;
 

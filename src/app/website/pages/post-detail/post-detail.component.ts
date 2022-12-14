@@ -30,14 +30,12 @@ export class PostDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private cookie: CookieService) {
     this.userId = this.cookie.get('user_id');
-    console.log(this.cookie.get('user_id'));
   }
 
 
   ngOnInit() {
     this.route.params.subscribe(id => {
       this.dataService.getOnePost(id['id']).subscribe(data => {
-        console.log(data);
         this.post = data;
         this.loading = false;
       });
@@ -54,14 +52,12 @@ export class PostDetailComponent implements OnInit {
             this.loginErrorCart = true;
             this.loadingCart = false;
           } else {
-            console.log(data);
             this.addedToCartSuccess = true;
             this.loadingCart = false;
           }
         });
       } else {
         this.quantityError = true;
-        console.log('Quantity must be greater than 0');
       }
     }
   }
@@ -74,7 +70,6 @@ export class PostDetailComponent implements OnInit {
           this.loginErrorComment = true;
           this.loadingComment = false;
         } else {
-          console.log(data);
           this.comment = '';
           this.ngOnInit();
           this.loadingComment = false;
@@ -86,7 +81,6 @@ export class PostDetailComponent implements OnInit {
   deleteComment(commentId: string) {
     if(window.confirm('Are you sure you want to delete this comment?')){
       this.dataService.deleteComment(this.post._id, commentId).subscribe(data => {
-        console.log(data);
         this.ngOnInit();
       });
     }
@@ -95,7 +89,6 @@ export class PostDetailComponent implements OnInit {
   deletePost(){
     if(window.confirm('Are you sure you want to delete this post?')){
       this.dataService.deletePost(this.post._id).subscribe(data => {
-        console.log(data);
         window.location.href = '/';
       });
     }

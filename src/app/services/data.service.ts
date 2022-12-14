@@ -48,7 +48,6 @@ export class DataService {
       params = params.append('title', filter.title);
     }
 
-    console.log(params);
     return this.http.get<PostData>(`${this.url}/postings`, {params});
   }
 

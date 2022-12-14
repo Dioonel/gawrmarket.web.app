@@ -42,7 +42,6 @@ export class PublishComponent implements OnInit {
           this.loginError = true;
           this.loadingSubmit = false;
         } else {
-          console.log(data);
           this.createdPost = data;
           this.loadingSubmit = false;
         }

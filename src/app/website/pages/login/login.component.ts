@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.form.valid){
       this.dataService.login(this.form.get('username')?.value, this.form.get('password')?.value).subscribe(data => {
-        console.log(data);
         sessionStorage.setItem('jwt', data.token);
         this.cookie.set('user_id', data.user._id);
         this.cookie.set('username', data.user.username);

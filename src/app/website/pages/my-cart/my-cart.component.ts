@@ -20,7 +20,6 @@ export class MyCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataService.getMyCart().subscribe(data => {
-      console.log(data);
       this.cart = data;
       this.loading = false;
 
@@ -34,7 +33,6 @@ export class MyCartComponent implements OnInit {
     if(postId){
       this.loadingRemove = true;
       this.dataService.popItem(postId).subscribe(data => {
-        console.log(data);
         this.ngOnInit();
         this.loadingRemove = false;
       });
@@ -44,7 +42,6 @@ export class MyCartComponent implements OnInit {
   empty(){
     if(window.confirm('Are you sure you want to empty your cart?'))
       this.dataService.emptyCart().subscribe(data => {
-        console.log(data);
         this.ngOnInit();
       });
   }
