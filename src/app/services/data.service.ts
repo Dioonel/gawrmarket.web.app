@@ -91,6 +91,10 @@ export class DataService {
     return this.http.delete<Cart>(`${this.url}/my-profile/cart/${postId}`);
   }
 
+  emptyCart(){
+    return this.http.delete<Cart>(`${this.url}/my-profile/cart/empty`);
+  }
+
   publishNewPost(post: any) {
     return this.http.post<Post | any>(`${this.url}/postings`, post);
   }

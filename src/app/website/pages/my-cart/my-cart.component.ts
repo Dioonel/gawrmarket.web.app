@@ -40,4 +40,16 @@ export class MyCartComponent implements OnInit {
       });
     }
   }
+
+  empty(){
+    if(window.confirm('Are you sure you want to empty your cart?'))
+      this.dataService.emptyCart().subscribe(data => {
+        console.log(data);
+        this.ngOnInit();
+      });
+  }
+
+  buy(){
+    window.alert('puto el que lea jsjs falta calle');
+  }
 }

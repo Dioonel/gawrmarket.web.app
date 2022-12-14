@@ -53,6 +53,14 @@
         <td>Total</td>
         <td> {{ (cart.total + cart.total * .75) | currency: 'USD':'symbol': '1.0-2' }}</td>
       </tr>
+      <tr class="buttons">
+        <td>
+          <a class="btn btn-warning" (click)="empty()">Empty cart</a>
+        </td>
+        <td>
+          <a class="btn btn-info" (click)="buy()">Buy now!</a>
+        </td>
+      </tr>
     </table>
   </div>
 </div>

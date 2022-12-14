@@ -172,6 +172,20 @@ td .remove:hover{
   margin-top: 25px;
 }
 
+.buttons{
+  font-size: 0.95em;
+}
+
+.btn-warning{
+  background-color: #ffae17;
+  border-color: #ffae17;
+}
+
+.btn-warning:hover{
+  background-color: #d68e09;
+  border-color: #d68e09;
+}
+
 @media screen and (width < 601px){
   *{
     font-size: 1.11em;
