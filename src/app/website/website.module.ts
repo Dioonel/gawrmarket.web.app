@@ -32,6 +32,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { UserTemplateComponent } from './components/user-template/user-template.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
+import { UsersComponent } from './pages/users/users.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { EditProfileComponent } from './pages/edit-profile/edit-profile.componen
         LayoutComponent,
         UserTemplateComponent,
         EditProfileComponent,
+        UsersComponent,
 
     ],
     imports: [

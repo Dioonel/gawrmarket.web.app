@@ -1,35 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { faShop, faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import { DataService } from '../../../services/data.service';
-import { Post, PostData } from '../../../models/post.model';
-
+import { UserData } from '../../../models/user.model';
 
 @Component({
-  selector: 'app-timeline',
-  templateUrl: './timeline.component.html',
-  styleUrls: ['./timeline.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class TimelineComponent implements OnInit {
+export class UsersComponent implements OnInit{
   loading = true;
-  data!: PostData;
+  data!: UserData;
   minPrice!: number;
   maxPrice!: number;
   isBack = false;
   isNext = false;
+  searchUsername = '';
+  faShop = faShop;
+  faSearch = faSearch;
 
-  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       console.log(params);
-      if(params['minPrice']) {
-        this.minPrice = params['minPrice'];
-      }
-      if(params['maxPrice']) {
-        this.maxPrice = params['maxPrice'];
-      }
-      this.dataService.getTimeline(params).subscribe(res => {
+      this.dataService.getAllUsers(params).subscribe(res => {
         this.data = res;
         console.log(this.data);
         this.loading = false;
@@ -41,35 +38,9 @@ export class TimelineComponent implements OnInit {
     });
   }
 
-  filter(){
-    this.activatedRoute.queryParams.subscribe(params => {
-      let myQuery: Params = {};
-      if(this.minPrice) {
-        myQuery['minPrice'] = this.minPrice;
-      }
-      if(this.maxPrice) {
-        myQuery['maxPrice'] = this.maxPrice;
-      }
-      if(params['title']) {
-        myQuery['title'] = params['title'];
-      }
-      if(params['offset']) {
-        myQuery['offset'] = 0;
-      }
-      this.router.navigate([], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'});
-      window.location.reload();
-    });
-  }
-
   offset(n: number){
     this.activatedRoute.queryParams.subscribe(params => {
       let myQuery: Params = {};
-      if(params['minPrice']) {
-        myQuery['minPrice'] = params['minPrice'];
-      }
-      if(params['maxPrice']) {
-        myQuery['maxPrice'] = params['maxPrice'];
-      }
       if(params['title']) {
         myQuery['title'] = params['title'];
       }
@@ -112,5 +83,14 @@ export class TimelineComponent implements OnInit {
         this.offset(1);
       }
     });
+  }
+
+  search(){
+    if(this.searchUsername) {
+      this.router.navigate([], {relativeTo: this.activatedRoute, queryParams: {username: this.searchUsername}, queryParamsHandling: 'merge'})
+      .then(() => {
+        window.location.reload();
+      })
+    }
   }
 }

@@ -1,0 +1,101 @@
+*{
+  font-size: 103%;
+}
+
+.title{
+  font-size: 1.2em;
+  line-height: 22.17px;
+  height: 44.34px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-cont{
+  display: flex;
+  gap: 15px;
+  color: black;
+}
+
+.flag-svg{
+  width: 25px;
+  height: 25px;
+}
+
+.gender-img{
+  width: 21px;
+  height: 21px;
+}
+
+.age{
+  font-weight: 500;
+  margin-top: 3px;
+}
+
+label, .btn, .page-link, .title{
+  font-family: 'Roboto';
+  font-weight: 500;
+}
+
+.search-div{
+  margin-bottom: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-div input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+  background-color: rgb(243, 243, 243);
+}
+
+.search-div button {
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-div button:hover {
+  background: #ccc;
+}
+
+/* Chrome, Safari, Edge, Opera */
+/* input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+/* Firefox */
+/* input[type=number] {
+  -moz-appearance: textfield;
+} */
+
+@media all and (max-width: 992px) {
+  .col-md-3{
+    width: 33%;
+    max-width: 33%;
+    flex: 0 0 33%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .col-md-3{
+    width: 50%;
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .col-md-3{
+    width: 80%;
+    max-width: 80%;
+    flex: 0 0 100%;
+  }
+}

@@ -3,7 +3,7 @@
 
   <div>
     <div class="search-bar">
-      <input type="search" [formControl]="searchContent" (focus)="focus()" (focusout)="unfocus()" autocomplete="off" required>
+      <input type="search" [formControl]="searchContent" (focus)="focus()" (focusout)="unfocus()" autocomplete="off" required placeholder="Product...">
       <button class="search-btn" type="submit" (click)="search()">
         <span>Search</span>
       </button>

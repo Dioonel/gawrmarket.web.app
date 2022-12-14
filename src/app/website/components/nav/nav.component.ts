@@ -46,7 +46,14 @@ export class NavComponent implements OnInit {
         myQuery['title'] = this.searchContent.value;
         if(this.searchContent.valid) {
           this.searchContent.setValue('');
-          this.router.navigate(['timeline'], {relativeTo: this.activatedRoute, queryParams: myQuery, queryParamsHandling: 'merge'})
+          this.router.navigate(['timeline'], {relativeTo: this.activatedRoute, queryParams: {
+            title: myQuery['title'],
+            minPrice: myQuery['minPrice'],
+            maxPrice: myQuery['maxPrice'],
+            offset: myQuery['offset'],
+            username: null
+          },
+          queryParamsHandling: 'merge'})
           .then(() => {
             window.location.reload();
           })

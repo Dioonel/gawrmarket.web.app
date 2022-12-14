@@ -288,3 +288,8 @@ export class UserData {
   data!: User[] | [];
   count!: number;
 }
+
+export class FilterUser{
+  username?: string;
+  offset?: number;
+}

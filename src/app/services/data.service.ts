@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map } from 'rxjs';
 
 import { Post, PostData, FilterPost } from './../models/post.model';
-import { User, UserData } from '../models/user.model';
+import { User, UserData, FilterUser } from '../models/user.model';
 import { Cart } from '../models/cart.model';
 import { CreateItem } from '../models/item.model';
 import { Comment } from '../models/comment.model';
@@ -31,9 +31,6 @@ export class DataService {
   }
 
   getTimeline(filter: FilterPost) {
-    // if(isEmpty(filter)){
-    //   return this.http.get<PostData>(`${this.url}/postings`);
-    // }
     let params = new HttpParams();
 
     params = params.append('limit', '18');
@@ -53,6 +50,21 @@ export class DataService {
 
     console.log(params);
     return this.http.get<PostData>(`${this.url}/postings`, {params});
+  }
+
+  getAllUsers(filter: FilterUser) {
+    let params = new HttpParams();
+
+    params = params.append('limit', '18');
+
+    if(filter.offset) {
+      params = params.append('offset', filter.offset.toString());
+    }
+    if(filter.username) {
+      params = params.append('username', filter.username);
+    }
+
+    return this.http.get<UserData>(`${this.url}/users`, {params});
   }
 
   getOnePost(id: string) {

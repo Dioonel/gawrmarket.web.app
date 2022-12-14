@@ -1,0 +1,54 @@
+<div class="spinner-div">
+  <mat-progress-spinner *ngIf="loading" [mode]="'indeterminate'" class="spinner">
+  </mat-progress-spinner>
+</div>
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section class="section-content padding-y">
+  <div class="container">
+    <div class="search-div">
+      <form (ngSubmit)="search()">
+        <input type="text" placeholder="Username...." name="search" [(ngModel)]="searchUsername" autocomplete="off">
+        <button type="submit"><fa-icon [icon]="faSearch"></fa-icon></button>
+      </form>
+    </div>
+    <div class="row">
+    <main class="col-md-12">
+      <div class="row" *ngIf="!loading">
+        <div class="col-md-3" *ngFor="let user of data.data">
+          <a [routerLink]="'/user/' + user._id">
+            <figure class="card card-product-grid">
+              <div class="img-wrap">
+                <app-img [img]="user.image"></app-img>
+              </div> <!-- img-wrap.// -->
+              <figcaption class="info-wrap">
+                <div class="fix-height">
+                  <a class="title">{{ user.username }}</a>
+                  <p class="p-cont">
+                    <span *ngIf="user.country"><img [src]="'assets/flags-svgs/' + (user.country.toString().toLowerCase()) + '.svg'" class="flag-svg"></span>
+                    <span *ngIf="user.gender !== 'Other'"><img [src]="'assets/' + user.gender + '.png'" class="gender-img"></span>
+                    <span *ngIf="user.age" class="age"> {{ user.age }} yo </span>
+                    <span *ngIf="user.postings.length > 0"><fa-icon [icon]="faShop"></fa-icon> {{ user.postings.length }} </span>
+                  </p>
+                </div>
+              </figcaption>
+            </figure>
+          </a>
+        </div> <!-- col.// -->
+      </div> <!-- row end.// -->
+
+
+      <nav *ngIf="!loading" class="mt-4" aria-label="Page navigation sample">
+        <ul class="pagination">
+          <li *ngIf="isBack" class="page-item"><a class="page-link" (click)="back()">Previous</a></li>
+          <li class="page-item active"><a class="page-link">Current</a></li>
+          <li *ngIf="isNext" class="page-item"><a class="page-link" (click)="next()">Next</a></li>
+        </ul>
+        <span> {{ data.count }} results. </span>
+      </nav>
+    </main> <!-- col.// -->
+    </div>
+  </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+
