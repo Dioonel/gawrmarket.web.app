@@ -47,6 +47,6 @@ export class MyCartComponent implements OnInit {
   }
 
   buy(){
-    window.alert('puto el que lea jsjs falta calle');
+    window.alert('This is a demo website, you can not buy anything. :(');
   }
 }
